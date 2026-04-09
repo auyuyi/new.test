@@ -3,257 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab | Experimental Design</title>
-    <style>
-        /* Reset & Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #000;
-            color: #fff;
-            overflow: hidden;
-            line-height: 1.6;
-        }
-
-        /* Transparent Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 30px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            backdrop-filter: blur(5px);
-        }
-
-        .logo {
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-size: 1.2rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.9rem;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            opacity: 1;
-        }
-
-        /* Fullscreen Slider Container */
-        .slider {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-        }
-
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), 
-                        transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: scale(1.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .slide.active {
-            opacity: 1;
-            visibility: visible;
-            transform: scale(1);
-        }
-
-        /* Background Overlay */
-        .slide::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
-            z-index: 1;
-        }
-
-        .bg-img {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Content Styles */
-        .content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 20px;
-        }
-
-        .content h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 800;
-            margin-bottom: 20px;
-            letter-spacing: -2px;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .content p {
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            opacity: 0;
-            transform: translateY(20px);
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* Staggered Content Animation */
-        .slide.active h1 {
-            animation: fadeInUp 0.8s cubic-bezier(0.2, 1, 0.3, 1) forwards 0.4s;
-        }
-
-        .slide.active p {
-            animation: fadeInUp 0.8s cubic-bezier(0.2, 1, 0.3, 1) forwards 0.2s;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Controls */
-        .controls {
-            position: absolute;
-            bottom: 50px;
-            right: 50px;
-            z-index: 10;
-            display: flex;
-            gap: 20px;
-        }
-
-        button {
-            background: none;
-            border: 1px solid rgba(255,255,255,0.3);
-            color: #fff;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        button:hover {
-            background: #fff;
-            color: #000;
-            border-color: #fff;
-        }
-    </style>
+    <title>Auyuyi | Illustrator & Artist</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav>
-        <div class="logo">LAB.NAME</div>
-        <div class="nav-links">
-            <a href="#">Works</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+    <div class="global-background">
+        <img src="your-background.webp" alt="Background Art" id="bg-image">
+        <div class="overlay"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" id="nav-logo">AUYUYI</a>
+            
+            <ul class="nav-links">
+                <li data-page="home" class="active">Home</li>
+                <li data-page="portfolios">Portfolios</li>
+                <li data-page="process">Process</li>
+                <li data-page="about">About</li>
+                <li data-page="contact">Contact</li>
+                <li data-page="shop">Shop</li>
+                <div class="nav-underline"></div>
+            </ul>
         </div>
     </nav>
 
-    <div class="slider">
-        <div class="slide active">
-            <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&q=80&w=2000" class="bg-img" alt="bg">
-            <div class="content">
-                <p>Experimental Lab 01</p>
-                <h1>MINIMALISM</h1>
+    <main id="content-slider">
+        
+        <section class="page active" id="home">
+            <div class="home-content">
+                <h1 class="big-name">Auyuyi</h1>
+                <p class="tagline">Illustrator / Visual Storyteller / Dreamer</p>
+                
+                <div class="social-links">
+                    <a href="https://instagram.com/..." target="_blank" class="icon-ig">Instagram</a>
+                    <a href="https://twitter.com/..." target="_blank" class="icon-tw">Twitter</a>
+                    <a href="https://artstation.com/..." target="_blank" class="icon-as">ArtStation</a>
+                    <a href="mailto:..." class="icon-mail">Email</a>
+                </div>
             </div>
-        </div>
+            
+            <footer class="copyright">
+                <p>&copy; 2026 Auyuyi. All rights reserved.</p>
+            </footer>
+        </section>
 
-        <div class="slide">
-            <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=2000" class="bg-img" alt="bg">
-            <div class="content">
-                <p>Experimental Lab 02</p>
-                <h1>ABSTRACTION</h1>
+        <section class="page" id="portfolios">
+            <div class="portfolio-container">
+                <div class="portfolio-frame">
+                    <div class="gallery-grid">
+                        <div class="thumb-item"><img src="thumb1.webp" alt="Work 1"></div>
+                        <div class="thumb-item"><img src="thumb2.webp" alt="Work 2"></div>
+                        </div>
+                </div>
+                <div class="custom-scrollbar">
+                    <div class="scrollbar-thumb"></div>
+                </div>
             </div>
-        </div>
+            
+            <div class="image-loader-bar" id="hd-loader"></div>
+        </section>
+
+        <section class="page" id="process"><h2>Process</h2></section>
+        <section class="page" id="about"><h2>About</h2></section>
+
+    </main>
+
+    <div class="side-arrow" id="next-page-btn">
+        <span>&#8594;</span>
     </div>
 
-    <div class="controls">
-        <button id="prevBtn">←</button>
-        <button id="nextBtn">→</button>
-    </div>
-
-    <script>
-        const slides = document.querySelectorAll('.slide');
-        const nextBtn = document.querySelector('#nextBtn');
-        const prevBtn = document.querySelector('#prevBtn');
-        let current = 0;
-
-        function showSlide(index) {
-            slides[current].classList.remove('active');
-            current = (index + slides.length) % slides.length;
-            slides[current].classList.add('active');
-        }
-
-        nextBtn.addEventListener('click', () => showSlide(current + 1));
-        prevBtn.addEventListener('click', () => showSlide(current - 1));
-
-        // Auto play optional
-        // setInterval(() => showSlide(current + 1), 5000);
-    </script>
-</body>
-</html>        </div>
-    </div>
-
-    <div class="controls">
-        <button id="prevBtn">←</button>
-        <button id="nextBtn">→</button>
-    </div>
-
-    <script>
-        const slides = document.querySelectorAll('.slide');
-        const nextBtn = document.querySelector('#nextBtn');
-        const prevBtn = document.querySelector('#prevBtn');
-        let current = 0;
-
-        function showSlide(index) {
-            slides[current].classList.remove('active');
-            current = (index + slides.length) % slides.length;
-            slides[current].classList.add('active');
-        }
-
-        nextBtn.addEventListener('click', () => showSlide(current + 1));
-        prevBtn.addEventListener('click', () => showSlide(current - 1));
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
