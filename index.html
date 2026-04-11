@@ -732,6 +732,43 @@
         .nav-transitioning section {
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
+#community {
+    height: 100vh;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+@media (max-width: 767px) {
+    #community .grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem;
+    }
+}
+/* 局部恢复滚动条：专门针对 custom-scrollbar 类 */
+.custom-scrollbar::-webkit-scrollbar {
+    display: block !important; /* 强行覆盖全局的 none */
+    width: 6px !important;    /* 稍微加粗一点点，看得更清楚 */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2) !important; /* 稍微调亮一点 */
+    border-radius: 10px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* 增加一个极细的边框，让它更明显 */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05) !important; /* 轨道背景，让用户知道滚动条的存在 */
+    border-radius: 10px;
+}
+
+/* 兼容 Firefox */
+.custom-scrollbar {
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent !important;
+}
     </style>
 </head>
 
@@ -758,6 +795,7 @@
             <a href="javascript:void(0)" onclick="scrollToSection(1)" class="nav-link">Gallery</a>
             <a href="javascript:void(0)" onclick="scrollToSection(2)" class="nav-link">Process</a>
             <a href="javascript:void(0)" onclick="scrollToSection(3)" class="nav-link">Contact</a>
+            <a href="javascript:void(0)" onclick="scrollToSection(4)" class="nav-link">Community</a>
             <div id="navIndicator" class="absolute bottom-[-8px] h-[2px] bg-gradient-to-r from-indigo-500 to-indigo-300 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]"></div>
         </div>
 
@@ -777,6 +815,7 @@
         <a href="javascript:void(0)" onclick="navAndCloseMenu(1)">Gallery</a>
         <a href="javascript:void(0)" onclick="navAndCloseMenu(2)">Process</a>
         <a href="javascript:void(0)" onclick="navAndCloseMenu(3)">Contact</a>
+        <a href="javascript:void(0)" onclick="navAndCloseMenu(4)">Community</a>
     </div>
 
     <div class="progress-bar">
@@ -1086,9 +1125,128 @@
                 </div>
             </div>
         </section>
-    </div>
+        <section id="community" class="flex flex-col justify-center px-6 md:px-24 py-20 relative min-w-full h-screen overflow-hidden">
+    <div class="max-w-7xl w-full mx-auto z-10">
+        <div class="mb-12">
+            <h2 class="text-white text-5xl md:text-7xl font-black tracking-tighter mb-4 text-reveal">LOUNGE<span class="text-indigo-500">.</span></h2>
+            <p class="text-white/40 font-medium text-reveal uppercase tracking-[0.3em] text-xs" style="transition-delay: 100ms;">Updates, Discussions & Connection</p>
+        </div>
 
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+            <div class="md:col-span-4 space-y-6 text-reveal" style="transition-delay: 200ms;">
+                <div onclick="toggleLogModal(true)" class="glass-panel rounded-[2rem] p-8 border border-white/5 shadow-2xl cursor-pointer hover:bg-white/10 transition-all duration-300 group">
+                    <h3 class="text-white/80 text-[10px] font-bold uppercase tracking-[0.2em] mb-6 flex items-center justify-between">
+                        <span class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-pulse"></span> Dev Log
+                        </span>
+                        <svg class="w-4 h-4 opacity-20 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 3h6m0 0v6m0-6L14 10M9 21H3m0 0v-6m0 6l7-7" stroke-width="2"/></svg>
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="relative pl-4 border-l border-white/10">
+                            <span class="text-[10px] text-white/30 block mb-1">APR 11, 2026</span>
+                            <p class="text-white/70 text-sm leading-relaxed line-clamp-2">Integrated Giscus and refined the community space.</p>
+                        </div>
+                        <p class="text-[10px] text-indigo-400/50 italic tracking-widest mt-4">Click to view all updates</p>
+                    </div>
+                </div>
+
+                <a href="Discord" target="_blank" class="group block glass-panel rounded-[2rem] p-6 border border-white/5 hover:border-indigo-500/30 transition-all duration-500">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-[#5865F2]/20 rounded-2xl flex items-center justify-center text-[#5865F2] group-hover:bg-[#5865F2] group-hover:text-white transition-all duration-500">
+                                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold text-sm">Join Discord</p>
+                                <p class="text-white/40 text-[10px] uppercase">Community Hub</p>
+                            </div>
+                        </div>
+                        <svg class="w-4 h-4 text-white/20 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6l6 6-6 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                </a>
+            </div>
+
+            <div class="md:col-span-8 glass-panel rounded-[3rem] p-1 border border-white/5 text-reveal shadow-2xl overflow-hidden" style="transition-delay: 300ms;">
+                <div class="p-8">
+                    <h3 class="text-white/80 text-[10px] font-bold uppercase tracking-[0.2em] mb-8">Guestbook</h3>
+                    <div class="giscus max-h-[30vh] overflow-y-auto pr-4 custom-scrollbar">
+                         <div class="flex flex-col items-center justify-center py-20 text-white/20">
+                             <p class="text-xs uppercase tracking-widest animate-pulse">Initialising Comments...</p>
+                             <script src="https://giscus.app/client.js"
+        data-repo="auyuyi/my-blog-comments"
+        data-repo-id="R_kgDOR_39-g"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOR_39-s4C6nHP"
+        data-mapping="url"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="transparent_dark"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-20 flex justify-center text-reveal" style="transition-delay: 500ms;">
+            <button onclick="scrollToSection(0)" class="group flex items-center gap-3 px-8 py-3 rounded-full border border-white/10 hover:border-white/30 hover:bg-white/5 transition-all duration-500">
+                <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"/></svg>
+                <span class="text-[10px] text-white/60 font-bold uppercase tracking-[0.4em] group-hover:text-white transition-colors">Return to Start</span>
+            </button>
+        </div>
+    </div>
+</section>
+    </div>
+    
+    <div id="logModal" class="fixed inset-0 z-[300] hidden items-center justify-center p-4 md:p-10">
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-xl" onclick="toggleLogModal(false)"></div>
+    
+    <div class="relative glass-panel w-full max-w-4xl max-h-[85vh] rounded-[3rem] border border-white/10 overflow-hidden flex flex-col md:flex-row shadow-2xl scale-95 opacity-0 transition-all duration-500" 
+         style="background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%);" id="modalContent">
+        
+        <div class="md:w-1/3 p-10 bg-white/5 border-b md:border-b-0 md:border-r border-white/10 flex flex-col justify-between"
+             style="background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 0%, transparent 100%);">
+            <div>
+                <h2 class="text-white text-4xl font-black italic tracking-tighter uppercase mb-4 text-reveal">Update<br>Log</h2>
+                <div class="w-10 h-1 bg-indigo-500 text-reveal"></div>
+            </div>
+            <button onclick="toggleLogModal(false)" class="text-white/40 hover:text-white text-[10px] tracking-widest uppercase mt-10 flex items-center gap-2 transition-all hover:gap-3">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="2"/></svg> Close
+            </button>
+        </div>
+        
+        <div class="md:w-2/3 p-10 overflow-y-auto space-y-12 text-reveal custom-scrollbar" style="scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.1) transparent;">
+            <div class="space-y-4">
+                <span class="text-indigo-400/80 font-mono text-xs tracking-widest">v2.1.0 / APR 2026</span>
+                <h4 class="text-white text-xl font-bold italic">The Community Era</h4>
+                <p class="text-white/70 text-sm leading-relaxed font-light">Added the Lounge section with Giscus integration. Introduced a centralized Discord hub for fans. Refined mobile navigation and fixed the scroll-back UI glitch.</p>
+            </div>
+            <div class="space-y-4">
+                <span class="text-white/20 font-mono text-xs tracking-widest">v2.0.5 / MAR 2026</span>
+                <h4 class="text-white text-xl font-bold italic">Fluid Mechanics</h4>
+                <p class="text-white/70 text-sm leading-relaxed font-light">Improved full-page horizontal transitions. Added the "Return to Top" smart button for long galleries. Optimized image loading priority.</p>
+            </div>
+            </div>
+    </div>
+</div>
+<div id="egg-corrector" class="fixed bottom-10 right-10 z-[200] cursor-pointer opacity-0 transition-all duration-700 translate-y-5 pointer-events-none">
+    <div class="relative group">
+        <div class="absolute inset-0 rounded-full bg-indigo-500/20 blur-xl group-hover:bg-indigo-500/40 transition-all duration-500"></div>
+        <div class="relative w-12 h-12 rounded-full border border-white/20 bg-white/5 backdrop-blur-2xl flex items-center justify-center group-hover:border-indigo-400/50 transition-all">
+            <svg class="w-5 h-5 text-white/70 group-hover:text-indigo-400 group-hover:-translate-y-1 transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M5 15l7-7 7 7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </div>
+</div>
     <script>
+        
         const container = document.getElementById('scrollContainer');
         const sections = document.querySelectorAll('section');
         const progressFill = document.getElementById('progressFill');
@@ -1326,7 +1484,108 @@
 
 
         Fancybox.bind("[data-fancybox]", {});
+
+        window.addEventListener('load', () => {
+    const eggBtn = document.getElementById('egg-corrector');
+    if (!eggBtn) return;
+
+    const hideBtn = () => {
+        eggBtn.classList.add('opacity-0', 'translate-y-5', 'pointer-events-none');
+        eggBtn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+    };
+
+    const showBtn = () => {
+        eggBtn.classList.remove('opacity-0', 'translate-y-5', 'pointer-events-none');
+        eggBtn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+    };
+
+
+    const checkState = () => {
+        const activeSec = document.querySelector('section.active-section');
+        if (!activeSec) return;
+
+        const isPC = window.innerWidth >= 768;
+        const scrollValue = activeSec.scrollTop;
+        const threshold = isPC ? 20 : 100;
+
+        if (scrollValue > threshold) {
+            showBtn();
+        } else {
+            hideBtn();
+        }
+    };
+
+
+    if (typeof sections !== 'undefined') {
+        sections.forEach(sec => {
+            sec.addEventListener('scroll', checkState);
+        });
+    }
+
+
+    eggBtn.addEventListener('click', () => {
+        const activeSec = document.querySelector('section.active-section');
+        if (activeSec) {
+            activeSec.scrollTo({ top: 0, behavior: 'smooth' });
+
+            eggBtn.style.transform = 'scale(0.8) translateY(10px)';
+            hideBtn();
+            setTimeout(() => { eggBtn.style.transform = ''; }, 500);
+        }
+    });
+
+
+    if (typeof container !== 'undefined') {
+        container.addEventListener('scroll', () => {
+
+            hideBtn();
+
+
+            clearTimeout(window.scrollFinished);
+            window.scrollFinished = setTimeout(() => {
+                checkState();
+            }, 100); 
+        });
+    }
+});
+function toggleLogModal(show) {
+    const modal = document.getElementById('logModal');
+    const content = document.getElementById('modalContent');
+    const reveals = content.querySelectorAll('.text-reveal'); 
+    
+    if (show) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        setTimeout(() => {
+            content.classList.remove('scale-95', 'opacity-0');
+            content.classList.add('scale-100', 'opacity-100');
+            
+
+            reveals.forEach((el, index) => {
+                el.style.transitionDelay = `${index * 100}ms`;
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            });
+        }, 10);
+        document.body.classList.add('modal-active');
+    } else {
+
+        reveals.forEach(el => {
+            el.style.transitionDelay = '0s';
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(10px)';
+        });
+        content.classList.add('scale-95', 'opacity-0');
+        content.classList.remove('scale-100', 'opacity-100');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.classList.remove('modal-active');
+        }, 300);
+    }
+}
     </script>
+
 </body>
 
 </html>
