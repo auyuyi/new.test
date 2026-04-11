@@ -9,23 +9,24 @@
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
     <style>
-        
-* {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;     /* Firefox */
-}
+        * {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;     /* Firefox */
+        }
 
-*::-webkit-scrollbar {
-    display: none;             /* Chrome, Safari and Opera */
-}
+        *::-webkit-scrollbar {
+            display: none;             /* Chrome, Safari and Opera */
+        }
 
-#mobileMenuLayer {
-    display: none;
-}
-body {
-    overflow: hidden;
-    touch-action: pan-y; 
-}
+        #mobileMenuLayer {
+            display: none;
+        }
+
+        body {
+            overflow: hidden;
+            touch-action: pan-y;
+        }
+
         :root {
             --apple-gray: #f5f5f7;
             --apple-blue: #0071e3;
@@ -42,56 +43,80 @@ body {
         }
 
         @media (min-width: 768px) {
-            body { overflow: hidden; }
+            body {
+                overflow: hidden;
+            }
             .horizontal-container {
                 display: flex;
                 overflow-x: auto;
                 height: 100vh;
                 width: 100vw;
-                -webkit-overflow-scrolling: touch; 
-                scroll-behavior: smooth; 
+                -webkit-overflow-scrolling: touch;
+                scroll-behavior: smooth;
             }
-            section { flex: 0 0 100vw; height: 100vh; }
+            section {
+                flex: 0 0 100vw;
+                height: 100vh;
+            }
         }
 
         @media (max-width: 767px) {
-  
-    section {
-        display: block !important; 
-        height: 100vh; 
-        overflow-y: auto;
-        padding-top: 100px !important; 
-        padding-bottom: 60px;
-    }
+            section {
+                display: block !important;
+                height: 100vh;
+                overflow-y: auto;
+                padding-top: 100px !important;
+                padding-bottom: 60px;
+            }
+            section .grid {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 2rem;
+                padding: 0 1.5rem;
+            }
+        }
 
-   
-    section .grid {
-        display: flex !important;
-        flex-direction: column !important; 
-        gap: 2rem;
-        padding: 0 1.5rem;
-    }
-}
         @media (max-width: 767px) {
-            .horizontal-container { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; height: 100vh; }
-            
+            .horizontal-container {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                height: 100vh;
+            }
             section {
                 flex: 0 0 100vw;
                 height: 100vh;
                 width: 100%;
                 overflow-y: auto;
-                padding-top: 100px; 
+                padding-top: 100px;
                 padding-bottom: 40px;
-                -webkit-overflow-scrolling: touch; 
-                scroll-behavior: smooth; 
+                -webkit-overflow-scrolling: touch;
+                scroll-behavior: smooth;
             }
-            .progress-bar { display: none; }
-
-            
+            section:first-child {
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+                min-height: 100vh;
+            }
+            section:first-child h1 {
+                font-size: 2.5rem !important;
+                margin-bottom: 2rem !important;
+            }
+            section:first-child p {
+                font-size: 0.75rem !important;
+                margin-bottom: 2rem !important;
+            }
+            section:first-child .flex.flex-col {
+                padding: 1rem;
+            }
+            .progress-bar {
+                display: none;
+            }
             #mobileMenuLayer {
                 position: fixed;
-                top: 75px;
-                right: 1.5rem;
                 width: 180px;
                 background: rgba(20, 20, 20, 0.7);
                 backdrop-filter: blur(20px);
@@ -122,16 +147,20 @@ body {
                 border-radius: 1rem;
                 transition: background 0.2s;
             }
-            #mobileMenuLayer a:active { background: rgba(255, 255, 255, 0.1); }
+            #mobileMenuLayer a:active {
+                background: rgba(255, 255, 255, 0.1);
+            }
         }
 
         body::before {
             content: '';
             position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background-color: rgba(0, 0, 0, 0.65); 
-            z-index: -2; 
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.65);
+            z-index: -2;
         }
 
         .horizontal-container {
@@ -143,91 +172,106 @@ body {
             width: 100vw;
             scrollbar-width: none;
         }
-        .horizontal-container::-webkit-scrollbar { display: none; }
+
+        .horizontal-container::-webkit-scrollbar {
+            display: none;
+        }
 
         section {
             flex: 0 0 100vw;
             height: 100vh;
             scroll-snap-align: start;
             position: relative;
-            overflow-y: auto; 
+            overflow-y: auto;
             overflow-x: hidden;
-            -webkit-overflow-scrolling: touch; 
-            background-color: transparent !important; 
+            -webkit-overflow-scrolling: touch;
+            background-color: transparent !important;
         }
 
-        
-.glass-panel {
-    background: rgba(255, 255, 255, 0.03); 
-    backdrop-filter: blur(15px); 
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-}
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
 
+        #loadingCircle {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            z-index: 1000;
+            display: none;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            padding: 15px;
+        }
 
+        .circle-svg {
+            transform: rotate(-90deg);
+        }
 
+        .circle-loader-bg {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.1);
+            stroke-width: 4;
+        }
 
+        .circle-loader-path {
+            fill: none;
+            stroke: #6366f1;
+            stroke-width: 4;
+            stroke-linecap: round;
+            stroke-dasharray: 126;
+            stroke-dashoffset: 126;
+            transition: stroke-dashoffset 0.3s ease;
+        }
 
-#loadingCircle {
-    position: fixed;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80px; height: 80px;
-    z-index: 1000;
-    display: none;
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-    border-radius: 50%;
-    padding: 15px;
-}
-.circle-svg {
-    transform: rotate(-90deg);
-}
-.circle-loader-bg {
-    fill: none;
-    stroke: rgba(255, 255, 255, 0.1);
-    stroke-width: 4;
-}
-.circle-loader-path {
-    fill: none;
-    stroke: #6366f1; 
-    stroke-width: 4;
-    stroke-linecap: round;
-    stroke-dasharray: 126;
-    stroke-dashoffset: 126;
-    transition: stroke-dashoffset 0.3s ease;
-}
+        #moreWorksLayer {
+            background: rgba(0, 0, 0, 0.3) !important;
+            backdrop-filter: blur(50px) saturate(180%) brightness(80%);
+            -webkit-backdrop-filter: blur(50px) saturate(180%) brightness(80%);
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.1);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 150;
+            transform-origin: center center;
+        }
 
+        #moreWorksLayer.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1);
+        }
 
-#moreWorksLayer {
-    background: rgba(0, 0, 0, 0.3) !important; 
-    backdrop-filter: blur(50px) saturate(180%) brightness(80%); 
-    -webkit-backdrop-filter: blur(50px) saturate(180%) brightness(80%);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 150;
-}
-#moreWorksLayer.active {
-    opacity: 1;
-    pointer-events: auto;
-}
+        #moreWorksLayer .grid a {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
+        #moreWorksLayer.active .grid a {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-.gallery-grid-clean {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(2, 250px);
-    gap: 1.5rem;
-    width: 100%;
-}
+        .gallery-grid-clean {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(2, 250px);
+            gap: 1.5rem;
+            width: 100%;
+        }
 
-
-.modal-scroll-area {
-    height: 100vh;
-    overflow-y: auto;
-    padding: 80px 20px;
-}
+        .modal-scroll-area {
+            height: 100vh;
+            overflow-y: auto;
+            padding: 80px 20px;
+        }
 
         nav {
             position: fixed;
@@ -243,39 +287,52 @@ body {
 
         @media (max-width: 767px) {
             nav {
-        padding: 1rem 1.5rem;
-       
-        background: rgba(10, 10, 10, 0.4) !important; 
-        backdrop-filter: blur(20px) saturate(180%);
-        -webkit-backdrop-filter: blur(20px) saturate(180%);
-
-       
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
-       
-        background-image: linear-gradient(
-            to bottom, 
-            rgba(255, 255, 255, 0.05) 0%, 
-            transparent 100%
-        ) !important;
-    }
-    .mobile-menu span {
-        background: linear-gradient(90deg, #fff, #a5b4fc) !important; 
-        height: 1.5px !important; 
-    }
-            .mobile-menu { display: flex; flex-direction: column; gap: 5px; cursor: pointer; width: 24px; }
-            .mobile-menu span { display: block; width: 100%; height: 2px; background: white; transition: 0.3s; }
-            .mobile-menu.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-            .mobile-menu.active span:nth-child(2) { opacity: 0; }
-            .mobile-menu.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-            .pc-nav-links { display: none; }
+                padding: 1rem 1.5rem;
+                background: rgba(10, 10, 10, 0.4) !important;
+                backdrop-filter: blur(20px) saturate(180%);
+                -webkit-backdrop-filter: blur(20px) saturate(180%);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                background-image: linear-gradient(
+                    to bottom,
+                    rgba(255, 255, 255, 0.05) 0%,
+                    transparent 100%
+                ) !important;
+            }
+            .mobile-menu {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                cursor: pointer;
+                width: 24px;
+            }
+            .mobile-menu span {
+                display: block;
+                width: 100%;
+                height: 1.5px;
+                background: linear-gradient(90deg, #fff, #a5b4fc) !important;
+                transition: 0.3s;
+            }
+            .mobile-menu.active span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+            .mobile-menu.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .mobile-menu.active span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+            .pc-nav-links {
+                display: none;
+            }
         }
 
         .bg-blob {
             position: absolute;
-            width: 600px; height: 600px;
+            width: 600px;
+            height: 600px;
             background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
-            z-index: -1; filter: blur(80px);
+            z-index: -1;
+            filter: blur(80px);
         }
 
         .text-reveal {
@@ -284,423 +341,744 @@ body {
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .active-section .text-reveal { transform: translateY(0); opacity: 1; }
+        .active-section .text-reveal {
+            transform: translateY(0);
+            opacity: 1;
+        }
 
         .progress-bar {
             position: fixed;
             bottom: 2rem;
             left: 50%;
             transform: translateX(-50%);
-            width: 200px; height: 2px;
+            width: 200px;
+            height: 2px;
             background: rgba(255, 255, 255, 0.1);
             z-index: 100;
         }
-        .progress-fill { height: 100%; background: white; width: 0%; transition: width 0.3s ease; }
-        .art-card { transition: transform 0.6s cubic-bezier(0.2, 0, 0, 1); }
-        .art-card:hover { transform: scale(1.02); }
 
-        
-@media (max-width: 767px) {
-    .site-footer {
-        width: 100%;
-        text-align: center;
-        padding: 2rem 1.5rem 1.5rem 1.5rem; 
-        margin-top: auto; 
-        border-top: 1px solid rgba(255, 255, 255, 0.05); 
-        background: rgba(0, 0, 0, 0.2); 
-    }
-@media (max-width: 767px) {
+        .progress-fill {
+            height: 100%;
+            background: white;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .art-card {
+            transition: transform 0.6s cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        .art-card:hover {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 767px) {
+            .site-footer {
+                width: 100%;
+                text-align: center;
+                padding: 2rem 1.5rem 1.5rem 1.5rem;
+                margin-top: auto;
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+                background: rgba(0, 0, 0, 0.2);
+            }
+            section {
+                height: auto !important;
+                min-height: 100vh;
+                display: block !important;
+                padding: 80px 20px !important;
+            }
+            .gallery-grid-clean {
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                grid-template-rows: auto !important;
+                gap: 1.5rem;
+                height: auto !important;
+            }
+            .gallery-grid-clean > div {
+                grid-column: span 1 / span 1 !important;
+                width: 100% !important;
+                aspect-ratio: 16 / 9 !important;
+                height: auto !important;
+                overflow: hidden;
+                border-radius: 1.5rem;
+            }
+            .gallery-grid-clean div[onclick="openMoreWorks()"] {
+                order: 99 !important;
+                aspect-ratio: 5 / 2 !important;
+                height: 120px !important;
+                margin-top: 1rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .site-footer {
+                position: absolute;
+                bottom: 2rem;
+                left: 0;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+        }
+
+        .gallery-grid-clean .group img {
+            filter: brightness(0.6) saturate(0.8);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-grid-clean .group:hover img {
+            filter: brightness(1) saturate(1);
+        }
+
+        .fancy-btn {
+            align-self: center !important;
+            width: fit-content !important;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 99px;
+            color: white;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .fancy-btn:hover {
+            background: rgba(99, 102, 241, 0.8);
+            border-color: #6366f1;
+            transform: translateY(-2px);
+        }
+
+        .fancybox__container {
+            z-index: 200 !important;
+        }
+        /* --- ENTRANCE LOADER SYSTEM --- */
+#shutter-wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background-color: #0a0a0a;
+    background-image: url('images/pic16.webp'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1.2s cubic-bezier(0.8, 0, 0.2, 1);
+}
+
+#shutter-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7); /* Darken mask */
+    backdrop-filter: blur(12px); /* Soft blur background */
+}
+
+#shutter-loader-line {
+    position: relative;
+    z-index: 10;
+    width: 0px;
+    height: 1px;
+    background: white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    transition: width 1.8s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+
+
+.loader-finished {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* --- NEW CONTACT CARD STYLE (Micro-Border Elegance) --- */
+.contact-card {
+
+    background: rgba(255,255,255,0.05); 
+    backdrop-filter: blur(20px); 
+    -webkit-backdrop-filter: blur(20px);
     
-    section {
-        height: auto !important;
-        min-height: 100vh;
-        display: block !important;
-        padding: 80px 20px !important;
-    }
 
+    border: 1px solid rgba(255, 255, 255, 0.08);
     
-    .gallery-grid-clean {
-        display: grid !important;
-        grid-template-columns: 1fr !important; 
-        grid-template-rows: auto !important;
-        gap: 1.5rem;
-        height: auto !important;
-    }
 
-   
-    .gallery-grid-clean > div {
-        grid-column: span 1 / span 1 !important;
-        width: 100% !important;
-       
-        aspect-ratio: 16 / 9 !important; 
-        height: auto !important;
-        overflow: hidden;
-        border-radius: 1.5rem;
-    }
-
-    
-    .gallery-grid-clean div[onclick="openMoreWorks()"] {
-        
-        order: 99 !important;
-        aspect-ratio: 5 / 2 !important; 
-        height: 120px !important; 
-        margin-top: 1rem; 
-    }
-}
-    
-}
-
-@media (min-width: 768px) {
-    .site-footer {
-        position: absolute;
-        bottom: 2rem;
-        left: 0;
-        width: 100%;
-        text-align: center;
-    }
-}
-
-
-.footer-text {
-    color: rgba(255, 255, 255, 0.1);
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.4em;
-}
-
-
-.gallery-grid-clean .group img {
-    filter: brightness(0.6) saturate(0.8); 
-    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.gallery-grid-clean .group:hover img {
-    filter: brightness(1) saturate(1); 
-}
-
-
-.fancy-btn {
-    align-self: center !important;
-    width: fit-content !important;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    padding: 8px 20px;
-    border-radius: 99px;
-    color: white;
-    transition: all 0.3s ease;
+    border-radius: 20px;
+    padding: 24px;
     display: flex;
     align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.fancy-btn:hover {
-    background: rgba(99, 102, 241, 0.8);
-    border-color: #6366f1;
+
+
+.contact-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
 }
-.fancybox__container {
-    z-index: 200 !important;
+
+/* --- THE SECRET SAUCE: Dynamic Micro-Border --- */
+
+.border-mask {
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.04); 
+    transition: all 0.5s ease;
 }
+
+
+.border-mask::after {
+    content: '';
+    position: absolute;
+    inset: -1px; 
+    border-radius: 20px;
+    border: 1px solid transparent;
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1); 
+    
+
+    border-color: #a5b4fc; /* Indigo 200 */
+   
+    clip-path: inset(0 100% 100% 0); 
+}
+
+
+.contact-card:hover .border-mask::after {
+    clip-path: inset(0 0 0 0); 
+}
+
+
+
+.contact-icon-box {
+    width: 48px; height: 48px;
+    background: rgba(20, 20, 20, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.4s ease;
+    z-index: 10;
+}
+
+
+.contact-card:hover .contact-icon-box {
+    color: #a5b4fc;
+    border-color: rgba(99, 102, 241, 0.1);
+    background: rgba(99, 102, 241, 0.04);
+}
+/* Ensure the section can scroll on small screens */
+#contact {
+    /* Change from fixed height to min-height */
+    min-height: 100vh; 
+    /* Allow vertical scrolling if content exceeds screen height */
+    overflow-y: auto; 
+    /* Smooth scrolling for iOS devices */
+    -webkit-overflow-scrolling: touch; 
+}
+
+/* Fix for the flex-grow container on mobile */
+#contact .flex-grow {
+    flex-shrink: 0; /* Prevents the card container from collapsing */
+}
+
+@keyframes card-collapse {
+    0% { transform: scale(1); opacity: 1; filter: blur(0px); }
+    100% { transform: scale(0.1); opacity: 0; filter: blur(10px); }
+}
+
+
+@keyframes card-restore {
+    0% { transform: scale(0.1); opacity: 0; filter: blur(10px); }
+    100% { transform: scale(1); opacity: 1; filter: blur(0px); }
+}
+
+
+.card-collapsing { animation: card-collapse 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+.card-restoring { animation: card-restore 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+#moreWorksLayer {
+
+    transform: scale(0.3); 
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
+
+    border-radius: 2rem; 
+    overflow: hidden; 
+}
+
+#moreWorksLayer.active {
+    border-radius: 0; 
+}
+
+.nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+
+.nav-link.active {
+    background: linear-gradient(90deg, #ffffff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 1 !important; 
+}
+
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #6366f1, #a5b4fc);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.nav-link.active::after {
+    width: 100%; 
+}
+
+        .contact-pill-btn {
+            padding: 0.65rem 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 9999px;
+            color: rgba(255, 255, 255, 0.6);
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .contact-pill-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            z-index: -1;
+        }
+
+        .contact-pill-btn:hover {
+            border-color: rgba(165, 180, 252, 0.6);
+            color: rgba(165, 180, 252, 1);
+        }
+
+        .contact-pill-btn:hover::before {
+            opacity: 1;
+            background: rgba(99, 102, 241, 0.2);
+        }
     </style>
 </head>
 <body>
+    <div id="shutter-wrapper">
+    <div id="shutter-loader-line"></div>
+    <div class="text-[9px] text-white/30 tracking-[0.8em] uppercase mt-4 relative z-10">Initialising Anthology</div>
+</div>
     <div id="loadingCircle">
-    <svg class="circle-svg" width="50" height="50">
-        <circle class="circle-loader-bg" cx="25" cy="25" r="20"></circle>
-        <circle id="circlePath" class="circle-loader-path" cx="25" cy="25" r="20"></circle>
-    </svg>
-</div>
-<nav>
-    <div class="text-white text-xl font-bold tracking-tighter">AUYUYI<span class="text-indigo-400">.</span></div>
-    
-    <div class="pc-nav-links hidden md:flex space-x-8 text-xs font-semibold uppercase tracking-widest text-white/60">
-        <a href="javascript:void(0)" onclick="scrollToSection(0)" class="hover:text-white transition">Home</a>
-        <a href="javascript:void(0)" onclick="scrollToSection(1)" class="hover:text-white transition">Gallery</a>
-        <a href="javascript:void(0)" onclick="scrollToSection(2)" class="hover:text-white transition">Process</a>
-        <a href="javascript:void(0)" onclick="scrollToSection(3)" class="hover:text-white transition">Contact</a>
+        <svg class="circle-svg" width="50" height="50">
+            <circle class="circle-loader-bg" cx="25" cy="25" r="20"></circle>
+            <circle id="circlePath" class="circle-loader-path" cx="25" cy="25" r="20"></circle>
+        </svg>
     </div>
-
-    <div class="md:hidden mobile-menu" onclick="toggleMobileMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-    <button class="hidden sm:block bg-white text-black text-[15px] font-bold px-4 py-1 rounded-full uppercase tracking-tighter hover:bg-indigo-400 hover:text-white transition">Commission</button>
-    
-</nav>
-
-<div id="mobileMenuLayer">
-    <a href="javascript:void(0)" onclick="scrollToSection(0); toggleMobileMenu()">Home</a>
-    <a href="javascript:void(0)" onclick="scrollToSection(1); toggleMobileMenu()">Gallery</a>
-    <a href="javascript:void(0)" onclick="scrollToSection(2); toggleMobileMenu()">Process</a>
-    <a href="javascript:void(0)" onclick="scrollToSection(3); toggleMobileMenu()">Contact</a>
+    <nav>
+        <div class="text-white text-xl font-bold tracking-tighter">AUYUYI<span class="text-indigo-400">.</span></div>
+       <div class="pc-nav-links hidden md:flex relative space-x-8 text-xs font-semibold uppercase tracking-widest text-white/60">
+    <a href="javascript:void(0)" onclick="scrollToSection(0)" class="nav-link active">Home</a>
+    <a href="javascript:void(0)" onclick="scrollToSection(1)" class="nav-link">Gallery</a>
+    <a href="javascript:void(0)" onclick="scrollToSection(2)" class="nav-link">Process</a>
+    <a href="javascript:void(0)" onclick="scrollToSection(3)" class="nav-link">Contact</a>
+    <div id="navIndicator" class="absolute bottom-[-8px] h-[2px] bg-gradient-to-r from-indigo-500 to-indigo-300 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]"></div>
 </div>
-
-<div class="progress-bar">
-    <div id="progressFill" class="progress-fill"></div>
-</div>
-
-<div class="horizontal-container" id="scrollContainer">
-   <section class="flex items-center justify-center active-section px-6 md:px-12 relative overflow-hidden">
-        <div class="bg-blob" style="top: -10%; right: -5%;"></div>
-        <div class="bg-blob" style="bottom: -15%; left: 10%; background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);"></div>
-
-        <div class="max-w-5xl w-full text-center flex flex-col items-center">
         
-        <span class="text-indigo-400 font-bold tracking-[0.3em] uppercase text-xs mb-6 block text-reveal" style="transition-delay: 100ms;">
-            Hi there, I'm a digital illustrator based in Earth.
-        </span>
-
-        <h1 class="text-white text-7xl md:text-9xl font-black leading-none tracking-tighter mb-10 text-reveal" style="transition-delay: 200ms;">
-            AUYUYI<span class="text-indigo-500">_</span>
-        </h1>
-
-        <div class="flex items-center space-x-6 text-reveal" style="transition-delay: 400ms;">
-            <a href="javascript:void(0)" onclick="scrollToSection(1)" class="group flex items-center space-x-3 bg-white text-black px-8 py-3.5 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-indigo-400 hover:text-white transition-all shadow-2xl">
-                <span>Explore Gallery</span>
-                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-            </a>
-            <div class="text-white/20">|</div>
-            <a href="javascript:void(0)" onclick="scrollToSection(3)" class="text-white/50 text-sm font-medium hover:text-white transition">Contact Me</a>
+        <div class="flex items-center gap-3 md:gap-6">
+            <button class="sm:hidden block bg-white text-black text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-tighter hover:bg-indigo-400 hover:text-white transition">Commission</button>
+            <div class="md:hidden mobile-menu" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <button class="hidden sm:block bg-white text-black text-[15px] font-bold px-4 py-1 rounded-full uppercase tracking-tighter hover:bg-indigo-400 hover:text-white transition">Commission</button>
         </div>
-        </div>
-    </section>
-    
+    </nav>
+
+    <div id="mobileMenuLayer">
+        <a href="javascript:void(0)" onclick="navAndCloseMenu(0)">Home</a>
+        <a href="javascript:void(0)" onclick="navAndCloseMenu(1)">Gallery</a>
+        <a href="javascript:void(0)" onclick="navAndCloseMenu(2)">Process</a>
+        <a href="javascript:void(0)" onclick="navAndCloseMenu(3)">Contact</a>
+    </div>
+
+    <div class="progress-bar">
+        <div id="progressFill" class="progress-fill"></div>
+    </div>
+
+    <div class="horizontal-container" id="scrollContainer">
+        <section class="flex items-center justify-center active-section px-6 md:px-12 relative overflow-hidden">
+            <div class="bg-blob" style="top: -10%; right: -5%;"></div>
+            <div class="bg-blob" style="bottom: -15%; left: 10%; background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);"></div>
+
+            <div class="max-w-5xl w-full text-center flex flex-col items-center">
+                <span class="text-indigo-400 font-bold tracking-[0.3em] uppercase text-xs mb-6 block text-reveal" style="transition-delay: 100ms;">
+                    Hi there, I'm a digital illustrator based in Earth.
+                </span>
+
+                <h1 class="text-white text-7xl md:text-9xl font-black leading-none tracking-tighter mb-10 text-reveal" style="transition-delay: 200ms;">
+                    AUYUYI<span class="text-indigo-500">_</span>
+                </h1>
+
+                <div class="flex items-center space-x-6 text-reveal" style="transition-delay: 400ms;">
+                    <a href="javascript:void(0)" onclick="scrollToSection(1)" class="group flex items-center space-x-3 bg-white text-black px-8 py-3.5 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-indigo-400 hover:text-white transition-all shadow-2xl">
+                        <span>Explore Gallery</span>
+                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </a>
+                    <div class="text-white/20">|</div>
+                    <a href="javascript:void(0)" onclick="scrollToSection(3)" class="text-white/50 text-sm font-medium hover:text-white transition">Contact Me</a>
+                </div>
+            </div>
+        </section>
+
     <section class="flex flex-col justify-center px-12 md:px-24 py-20 relative">
-    <div class="absolute top-20 left-12 text-white/5 text-[15vw] font-black select-none pointer-events-none tracking-tighter">GALLERY</div>
-    
-    <div class="max-w-7xl w-full mx-auto z-10">
-        <div class="flex justify-between items-end mb-12">
-            <div>
-                <h2 class="text-white text-5xl font-black tracking-tighter mb-2">Selected Works (๑>ᴗ<๑)</h2>
-                <p class="text-white/40 text-sm">Visual experiments and personal illustrations.</p>
-            </div>
-            <button onclick="scrollToSection(2)" class="fancy-btn group">
-                <span class="text-[10px] font-bold uppercase tracking-[0.2em]">The Process</span>
-                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 7l5 5m0 0l-5 5m5-5H6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-        </div>
+         
 
-        <div class="gallery-grid-clean">
-            <div class="col-span-6 row-span-2 rounded-[2rem] overflow-hidden glass-panel group">
-                <a href="images/pic01.webp" data-fancybox="gallery">
-                    <img src="images/pic01.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                </a>
-            </div>
-            <div class="col-span-3 row-span-1 rounded-[2rem] overflow-hidden glass-panel group">
-                <a href="images/pic02.webp" data-fancybox="gallery">
-                    <img src="images/pic02.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                </a>
-            </div>
-            <div onclick="openMoreWorks()" class="col-span-3 row-span-2 rounded-[2rem] bg-white/5 border border-white/10 flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 transition group">
-                <div class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center mb-4 group-hover:scale-110 transition">
-                    <span class="text-white text-xl">＋</span>
-                </div>
-                <span class="text-white/60 text-[10px] font-bold uppercase tracking-widest">More Works</span>
-                <span class="text-white/20 text-[9px] mt-2">(⊙o⊙)</span>
-            </div>
-            <div class="col-span-3 row-span-1 rounded-[2rem] overflow-hidden glass-panel group">
-                <a href="images/pic03.webp" data-fancybox="gallery">
-                    <img src="images/pic03.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                </a>
-            </div>
-        </div>
-    </div>
-    <div id="moreWorksLayer" class="fixed inset-0 overflow-hidden">
-    <div class="h-full overflow-y-auto px-6 py-12 custom-content-scroll">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex justify-between items-center mb-16 sticky top-0 z-20 py-4">
-                <button onclick="closeMoreWorks()" class="fancy-btn group">
-                    <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-width="2" stroke-linecap="round"/></svg>
-                    <span class="text-[10px] font-bold uppercase tracking-widest">Back (´•ω•̥`)</span>
-                </button>
-                <a href="https://pixiv.net" target="_blank" class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-black px-5 py-2 rounded-full transition">VIEW ON PIXIV</a>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <a href="images/pic04.webp" data-fancybox="gallery-more"><img src="images/pic04.webp" class="w-full rounded-[2rem] shadow-2xl hover:scale-[1.02] transition-transform duration-500"></a>
-                <a href="images/pic05.webp" data-fancybox="gallery-more"><img src="images/pic05.webp" class="w-full rounded-[2rem] shadow-2xl hover:scale-[1.02] transition-transform duration-500"></a>
-                <a href="images/pic06.webp" data-fancybox="gallery-more"><img src="images/pic06.webp" class="w-full rounded-[2rem] shadow-2xl hover:scale-[1.02] transition-transform duration-500"></a>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
-
-
-    <section class="flex flex-col section-motion px-6 md:px-12 py-20">
-    <div class="max-w-7xl w-full mx-auto">
-        <div class="flex justify-between items-end mb-12">
-            <div>
-                <h2 class="text-white text-5xl md:text-6xl font-bold tracking-tighter mb-4 text-reveal">
-                    Painting Process 
-                    <span class="block">
-                        ( ˶ˆ꒳ˆ˵ )
-                    </span>
-                </h2>
-                <p class="text-white/40 font-medium tracking-wide text-reveal" style="transition-delay: 100ms;">
-                    A deep dive into my creative workflow, from messy sketches to final renders.
-                </p>
-            </div>
-            <div class="hidden md:block text-white/10 text-9xl font-black italic">PROCESS</div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            <div class="space-y-4 text-reveal" style="transition-delay: 200ms;">
-                <div class="flex items-center space-x-2 mb-2">
-                    <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-                    <h3 class="text-white/80 text-xs font-bold uppercase tracking-[0.2em]">Live Speedpaints</h3>
-                </div>
-                <div class="group relative aspect-video rounded-3xl overflow-hidden glass-panel border border-white/10 hover:border-indigo-500/50 transition-all duration-500 cursor-pointer">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
-                    <img src="images/thumb01.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Thumbnail">
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <p class="text-white font-bold text-sm truncate">Character Lineart: 2H Marathon ( •̀ᴗ•́ )و ̑̑</p>
-                        <p class="text-white/40 text-[10px] uppercase mt-1">12:45 • Clip Studio Paint</p>
+            <div class="max-w-7xl w-full mx-auto z-10">
+                <div class="flex justify-between items-end mb-12">
+                    <div>
+                        <h2 class="text-white text-5xl font-black tracking-tighter mb-2 text-reveal">Selected Works (๑>ᴗ<๑)</h2>
+                        <p class="text-white/40 text-sm text-reveal" style="transition-delay: 100ms;">Visual experiments and personal illustrations.</p>
                     </div>
-                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <button onclick="scrollToSection(2)" class="fancy-btn group">
+                        <span class="text-[10px] font-bold uppercase tracking-[0.2em]">The Process</span>
+                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M13 7l5 5m0 0l-5 5m5-5H6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="gallery-grid-clean">
+                    <div class="col-span-6 row-span-2 rounded-[2rem] overflow-hidden glass-panel group text-reveal relative" style="transition-delay: 200ms;">
+                        <a href="images/pic01.webp" data-fancybox="gallery">
+                            <img src="images/pic01.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 z-10">
+                                <p class="text-sm font-bold mb-1">Spring Dreams</p>
+                                <p class="text-xs text-white/70">2024</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-span-3 row-span-1 rounded-[2rem] overflow-hidden glass-panel group text-reveal relative" style="transition-delay: 300ms;">
+                        <a href="images/pic02.webp" data-fancybox="gallery">
+                            <img src="images/pic02.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 z-10">
+                                <p class="text-sm font-bold mb-1">Ocean Whispers</p>
+                                <p class="text-xs text-white/70">2024</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="moreWorksTrigger" onclick="openMoreWorks()" class="col-span-3 row-span-2 rounded-[2rem] glass-panel flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 transition-all duration-500 group relative overflow-hidden text-reveal" style="transition-delay: 500ms;">
+                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="relative z-10 flex flex-col items-center">
+                            <div class="w-14 h-14 rounded-full border border-white/10 bg-white/5 flex items-center justify-center mb-5 group-hover:border-indigo-400/50 group-hover:bg-indigo-500/10 transition-all duration-500">
+                                <svg class="w-6 h-6 text-white/80 group-hover:text-indigo-400 transform group-hover:scale-110 group-hover:translate-y-px transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span class="text-white text-[11px] font-black uppercase tracking-[0.3em] mb-1">View Archives</span>
+                            <span class="text-white/40 text-[9px] font-medium uppercase tracking-widest">More Works (⊙o⊙)</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center"></div>
+                    </div>
+                    <div class="col-span-3 row-span-1 rounded-[2rem] overflow-hidden glass-panel group text-reveal relative" style="transition-delay: 400ms;">
+                        <a href="images/pic03.webp" data-fancybox="gallery">
+                            <img src="images/pic03.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 z-10">
+                                <p class="text-sm font-bold mb-1">Forest Tales</p>
+                                <p class="text-xs text-white/70">2023</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="moreWorksLayer" class="fixed inset-0 overflow-hidden">
+                <div class="h-full overflow-y-auto px-6 py-12 custom-content-scroll">
+                    <div class="max-w-6xl mx-auto">
+                        <div class="flex justify-between items-center mb-16 sticky top-0 z-20 py-4">
+                            <button onclick="closeMoreWorks()" class="fancy-btn group">
+                                <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path d="M15 19l-7-7 7-7" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                                <span class="text-[10px] font-bold uppercase tracking-widest">Back (´•ω•̥`)</span>
+                            </button>
+                            <a href="https://pixiv.net" target="_blank" class="bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-black px-5 py-2 rounded-full transition">VIEW ON PIXIV</a>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            <a href="images/pic04.webp" data-fancybox="gallery-more"><img src="images/pic04.webp" class="w-full rounded-[2rem] shadow-2xl hover:scale-[1.02] transition-transform duration-500"></a>
+                            <a href="images/pic05.webp" data-fancybox="gallery-more"><img src="images/pic05.webp" class="w-full rounded-[2rem] shadow-2xl hover:scale-[1.02] transition-transform duration-500"></a>
+                            <a href="images/pic06.webp" data-fancybox="gallery-more"><img src="images/pic06.webp" class="w-full rounded-[2rem] shadow-2xl hover:scale-[1.02] transition-transform duration-500"></a>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="space-y-4 text-reveal" style="transition-delay: 300ms;">
-                <div class="flex items-center space-x-2 mb-2">
-                    <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
-                    <h3 class="text-white/80 text-xs font-bold uppercase tracking-[0.2em]">Workflow Tips</h3>
-                </div>
-                <div class="group relative aspect-video rounded-3xl overflow-hidden glass-panel border border-white/10 hover:border-indigo-500/50 transition-all duration-500 cursor-pointer">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 transition-opacity"></div>
-                    <img src="images/thumb02.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Thumbnail">
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <p class="text-white font-bold text-sm truncate">My Color Theory is a Lie ┐(´～｀)┌</p>
-                        <p class="text-white/40 text-[10px] uppercase mt-1">08:20 • Education</p>
+        <section class="flex flex-col section-motion px-6 md:px-12 py-20">
+            <div class="max-w-7xl w-full mx-auto">
+                <div class="flex justify-between items-end mb-12">
+                    <div>
+                        <h2 class="text-white text-5xl md:text-6xl font-bold tracking-tighter mb-4 text-reveal">
+                            Painting Process
+                            <span class="block">( ˶ˆ꒳ˆ˵ )</span>
+                        </h2>
+                        <p class="text-white/40 font-medium tracking-wide text-reveal" style="transition-delay: 100ms;">
+                            A deep dive into my creative workflow, from messy sketches to final renders.
+                        </p>
                     </div>
-                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="space-y-4 text-reveal" style="transition-delay: 200ms;">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                            <h3 class="text-white/80 text-xs font-bold uppercase tracking-[0.2em]">Live Speedpaints</h3>
+                        </div>
+                        <div class="group relative aspect-video rounded-3xl overflow-hidden glass-panel border border-white/10 hover:border-indigo-500/50 transition-all duration-500 cursor-pointer">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+                            <img src="images/pic12.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Thumbnail">
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <p class="text-white font-bold text-sm truncate">Character Lineart: 2H Marathon ( •̀ᴗ•́ )و ̑̑</p>
+                                <p class="text-white/40 text-[10px] uppercase mt-1">12:45 • Clip Studio Paint</p>
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 text-reveal" style="transition-delay: 300ms;">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
+                            <h3 class="text-white/80 text-xs font-bold uppercase tracking-[0.2em]">Workflow Tips</h3>
+                        </div>
+                        <div class="group relative aspect-video rounded-3xl overflow-hidden glass-panel border border-white/10 hover:border-indigo-500/50 transition-all duration-500 cursor-pointer">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 transition-opacity"></div>
+                            <img src="images/pic13.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Thumbnail">
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <p class="text-white font-bold text-sm truncate">My Color Theory is a Lie ┐(´～｀)┌</p>
+                                <p class="text-white/40 text-[10px] uppercase mt-1">08:20 • Education</p>
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 text-reveal" style="transition-delay: 400ms;">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                            <h3 class="text-white/80 text-xs font-bold uppercase tracking-[0.2em]">Studio Vlogs</h3>
+                        </div>
+                        <div class="group relative aspect-video rounded-3xl overflow-hidden glass-panel border border-white/10 hover:border-indigo-500/50 transition-all duration-500 cursor-pointer">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 transition-opacity"></div>
+                            <img src="images/pic14.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Thumbnail">
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <p class="text-white font-bold text-sm truncate">Drawing till 4AM (╥﹏╥)</p>
+                                <p class="text-white/40 text-[10px] uppercase mt-1">15:00 • Relaxing</p>
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="space-y-4 text-reveal" style="transition-delay: 400ms;">
-                <div class="flex items-center space-x-2 mb-2">
-                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-                    <h3 class="text-white/80 text-xs font-bold uppercase tracking-[0.2em]">Studio Vlogs</h3>
-                </div>
-                <div class="group relative aspect-video rounded-3xl overflow-hidden glass-panel border border-white/10 hover:border-indigo-500/50 transition-all duration-500 cursor-pointer">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 transition-opacity"></div>
-                    <img src="images/thumb03.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Thumbnail">
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <p class="text-white font-bold text-sm truncate">Drawing till 4AM (╥﹏╥)</p>
-                        <p class="text-white/40 text-[10px] uppercase mt-1">15:00 • Relaxing</p>
-                    </div>
-                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </div>
-                    </div>
+                <div class="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-reveal" style="transition-delay: 500ms;">
+                    <p class="text-white/30 text-xs tracking-widest italic">Wait... I forgot what I was drawing (⊙_⊙)</p>
+                    <a href="https://youtube.com/@yourchannel" class="mt-4 md:mt-0 text-indigo-400 hover:text-white text-xs font-bold uppercase tracking-widest flex items-center space-x-2 transition-colors">
+                        <span>View Full Channel</span>
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M10 6l6 6-6 6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </a>
                 </div>
             </div>
+        </section>
 
-        </div>
+<section id="contact" class="min-h-screen flex flex-col bg-transparent relative overflow-hidden">
+    <div class="bg-blob" style="bottom: -15%; left: -5%; width: 700px; height: 700px; background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 75%);"></div>
 
-        <div class="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-reveal" style="transition-delay: 500ms;">
-            <p class="text-white/30 text-xs tracking-widest italic">Wait... I forgot what I was drawing (⊙_⊙)</p>
-            <a href="https://youtube.com/@yourchannel" class="mt-4 md:mt-0 text-indigo-400 hover:text-white text-xs font-bold uppercase tracking-widest flex items-center space-x-2 transition-colors">
-                <span>View Full Channel</span>
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6l6 6-6 6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            </a>
-        </div>
-    </div>
-</section>
-
-    <section class="flex flex-col items-center justify-center bg-transparent"> <div class="bg-blob" style="..."></div>
-        <div class="bg-blob" style="bottom: -10%; left: -5%; background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);"></div>
-        <div class="max-w-5xl w-full px-12 text-center">
-            <div class="mb-16">
+    <div class="flex-grow flex flex-col items-center justify-center z-10 px-12">
+        <div class="max-w-5xl w-full text-center">
+            <div class="mb-20">
                 <h2 class="text-white text-6xl md:text-8xl font-black tracking-tighter leading-none mb-6 text-reveal">
                     Say <span class="text-indigo-400">Hello!</span>
                 </h2>
                 <p class="text-white/40 text-lg font-medium text-reveal" style="transition-delay: 100ms;">
-                    Available for freelance commissions and creative direction.
+                    Available for freelance commissions.
                 </p>
             </div>
-            <div class="flex flex-col gap-3 w-full max-w-sm mx-auto text-reveal" style="transition-delay: 200ms;">
-    <a href="mailto:hello@auyuyi.art" class="glass-panel p-5 rounded-2xl flex items-center justify-between group hover:bg-white/10 transition-all">
-        <div class="flex items-center space-x-4">
-            <div class="w-10 h-10 bg-indigo-500/20 rounded-full flex items-center justify-center">
-                <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-2xl mx-auto text-reveal" style="transition-delay: 200ms;">
+                <a href="mailto:hi@auyuyi.art" class="contact-card group">
+                    <div class="border-mask"></div>
+                    <div class="contact-icon-box relative z-10">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div class="text-left flex-1 relative z-10">
+                        <span class="text-white font-bold text-base block tracking-tight">hi@auyuyi.art</span>
+                        <span class="text-white/40 text-[9px] tracking-[0.4em] uppercase mt-0.5 block">Official Inquiry</span>
+                    </div>
+                </a>
+
+                <a href="#" class="contact-card group">
+                    <div class="border-mask"></div>
+                    <div class="contact-icon-box relative z-10">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div class="text-left flex-1 relative z-10">
+                        <span class="text-white font-bold text-base block tracking-tight">Artstation</span>
+                        <span class="text-white/40 text-[9px] tracking-[0.4em] uppercase mt-0.5 block">Artwork Portfolio</span>
+                    </div>
+                </a>
+
+                <a href="#" class="contact-card group">
+                    <div class="border-mask"></div>
+                    <div class="contact-icon-box relative z-10">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                    </div>
+                    <div class="text-left flex-1 relative z-10">
+                        <span class="text-white font-bold text-base block tracking-tight">Twitter / X</span>
+                        <span class="text-white/40 text-[9px] tracking-[0.4em] uppercase mt-0.5 block">Daily Thoughts</span>
+                    </div>
+                </a>
+
+                <a href="#" class="contact-card group">
+                    <div class="border-mask"></div>
+                    <div class="contact-icon-box relative z-10">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="18" cy="6" r="1" fill="currentColor"/></svg>
+                    </div>
+                    <div class="text-left flex-1 relative z-10">
+                        <span class="text-white font-bold text-base block tracking-tight">Instagram</span>
+                        <span class="text-white/40 text-[9px] tracking-[0.4em] uppercase mt-0.5 block">Daily Sketches</span>
+                    </div>
+                </a>
             </div>
-            <div class="text-left">
-                <span class="text-white font-bold text-sm block">Email Inquiry</span>
-                <span class="text-white/30 text-[10px] uppercase tracking-widest">Available for hire</span>
-            </div>
         </div>
-        <svg class="w-4 h-4 text-white/20 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg>
-    </a>
-
-    <a href="#" class="glass-panel p-4 rounded-2xl flex items-center justify-between group hover:bg-white/10 transition-all">
-        <div class="flex items-center space-x-4">
-            <svg class="w-5 h-5 text-white/60 ml-2" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
-            <span class="text-white/80 text-sm font-medium">Twitter / X</span>
-        </div>
-        <span class="text-white/20 text-[10px]">FOLLOW</span>
-    </a>
-
-    <a href="#" class="glass-panel p-4 rounded-2xl flex items-center justify-between group hover:bg-white/10 transition-all">
-        <div class="flex items-center space-x-4">
-            <svg class="w-5 h-5 text-white/60 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-            <span class="text-white/80 text-sm font-medium">Pixiv</span>
-        </div>
-        <span class="text-white/20 text-[10px]">ARTWORK</span>
-    </a>
-
-    <a href="#" class="glass-panel p-4 rounded-2xl flex items-center justify-between group hover:bg-white/10 transition-all">
-        <div class="flex items-center space-x-4">
-            <div class="w-5 h-5 border-2 border-white/40 rounded-md ml-2 flex items-center justify-center"><div class="w-1.5 h-1.5 bg-white/40 rounded-full"></div></div>
-            <span class="text-white/80 text-sm font-medium">Instagram</span>
-        </div>
-        <span class="text-white/20 text-[10px]">DAILY</span>
-    </a>
-</div>
-        <div class="site-footer footer-text">
-        © 2026 Auyuyi Visual Anthology — Built for the future
     </div>
-    </section>
-</div>
 
-<script>
-    // --- Basic Selectors ---
+    <div class="w-full py-8 text-center z-10">
+        <div class="site-footer footer-text opacity-30 text-[10px] tracking-[0.5em] uppercase">
+            © 2026 Auyuyi Visual Anthology — Built for the future
+        </div>
+    </div>
+</section>
+     
+
+        <script>
+           // --- PRELOADER & ENTRANCE LOGIC ---
+
 const container = document.getElementById('scrollContainer');
 const sections = document.querySelectorAll('section');
 const progressFill = document.getElementById('progressFill');
 
-// --- Modal & Loader Selectors ---
-const loadingCircle = document.getElementById('loadingCircle');
-const circlePath = document.getElementById('circlePath');
-const moreWorksLayer = document.getElementById('moreWorksLayer');
+const navLinks = document.querySelectorAll('.nav-link'); 
 
-// Main Scroll Logic
-container.addEventListener('scroll', () => {
-    const scrollWidth = container.scrollWidth - container.clientWidth;
-    const scrollLeft = container.scrollLeft;
-    const progress = (scrollLeft / (scrollWidth || 1)) * 100;
-    progressFill.style.width = progress + '%';
+document.addEventListener('DOMContentLoaded', () => {
+    const loader = document.getElementById('shutter-wrapper');
+    const line = document.getElementById('shutter-loader-line');
+    const firstSection = document.querySelector('section');
 
-    const currentIndex = Math.round(scrollLeft / window.innerWidth);
-    sections.forEach((sec, idx) => {
-        if(idx === currentIndex) sec.classList.add('active-section');
-        else sec.classList.remove('active-section');
+    const config = {
+        blurFadeDuration: 1200, 
+        loaderHoldTime: 1800,   
+        isHome: container.scrollLeft < 200 
+    };
+
+    if (!config.isHome) {
+        if (loader) loader.style.display = 'none';
+        if (firstSection) firstSection.classList.add('active-section');
+        return; 
+    }
+
+    if (firstSection) firstSection.classList.remove('active-section');
+
+    setTimeout(() => {
+        if(line) line.style.width = '240px';
+    }, 150);
+
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            if(loader) loader.classList.add('loader-finished');
+            setTimeout(() => {
+                if (firstSection) firstSection.classList.add('active-section');
+            }, 400);
+        }, config.loaderHoldTime);
     });
 });
 
-// Navigation Function
+
+container.addEventListener('scroll', () => {
+    const scrollWidth = container.scrollWidth - container.clientWidth;
+    const scrollLeft = container.scrollLeft;
+    
+
+    const progress = (scrollLeft / (scrollWidth || 1)) * 100;
+    if (progressFill) progressFill.style.width = progress + '%';
+
+    const currentIndex = Math.floor((scrollLeft + window.innerWidth * 0.3) / window.innerWidth);
+    
+
+    sections.forEach((sec, idx) => {
+        if (idx === currentIndex) {
+            sec.classList.add('active-section');
+            
+            if (navLinks[idx]) navLinks[idx].classList.add('active');
+        } else {
+            sec.classList.remove('active-section');
+            if (navLinks[idx]) navLinks[idx].classList.remove('active');
+        }
+    });
+});
+
+
 function scrollToSection(index) {
     container.scrollTo({
         left: window.innerWidth * index,
@@ -708,80 +1086,109 @@ function scrollToSection(index) {
     });
 }
 
-// Mobile Menu Logic
-function toggleMobileMenu() {
-    const menu = document.getElementById('mobileMenuLayer');
-    const burgerBtn = document.querySelector('.mobile-menu');
-    menu.classList.toggle('active');
-    burgerBtn.classList.toggle('active');
-}
+            // Mobile Menu Logic
+            function toggleMobileMenu() {
+                const menu = document.getElementById('mobileMenuLayer');
+                const burgerBtn = document.querySelector('.mobile-menu');
+                
+                if (!menu.classList.contains('active')) {
+                    // Calculate burger button position
+                    const rect = burgerBtn.getBoundingClientRect();
+                    const top = rect.bottom + 10; // 10px below the burger button
+                    const right = window.innerWidth - rect.right; // Distance from right edge
+                    
+                    menu.style.top = top + 'px';
+                    menu.style.right = right + 'px';
+                }
+                
+                menu.classList.toggle('active');
+                burgerBtn.classList.toggle('active');
+            }
 
-// --- Circular Loading & Modal Logic ---
+            function navAndCloseMenu(index) {
+                scrollToSection(index);
+                toggleMobileMenu();
+            }
 
-/**
- * Runs the circular progress animation
- * @param {Function} callback - What to do when loading finishes
- */
-function runCircleLoading(callback) {
-    loadingCircle.style.display = 'block';
-    let progress = 126; // The dashoffset value for the circle
+            // --- Modal Logic ---
+
+
+            function openMoreWorks() {
+    const layer = document.getElementById('moreWorksLayer');
+    const triggerCard = document.getElementById('moreWorksTrigger');
     
-    const interval = setInterval(() => {
-        progress -= 14; // Speed of the loader
-        circlePath.style.strokeDashoffset = progress;
-        
-        if (progress <= 0) {
-            clearInterval(interval);
-            setTimeout(() => {
-                loadingCircle.style.display = 'none';
-                circlePath.style.strokeDashoffset = 126; // Reset for next time
-                callback();
-            }, 300);
-        }
-    }, 40);
-}
 
-function openMoreWorks() {
-    runCircleLoading(() => {
-        moreWorksLayer.classList.add('active');
-        document.body.classList.add('modal-active'); // Lock the background
-        
-        Fancybox.bind('[data-fancybox="gallery-more"]', {});
+    const rect = triggerCard.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+
+    layer.style.transformOrigin = `${centerX}px ${centerY}px`;
+
+
+    triggerCard.classList.remove('card-restoring');
+    triggerCard.classList.add('card-collapsing');
+    
+  
+    setTimeout(() => {
+        layer.classList.add('active');
+        document.body.classList.add('modal-active'); 
+    }, 10);
+
+
+    const workItems = layer.querySelectorAll('.grid a');
+    workItems.forEach((item, index) => {
+        item.style.transitionDelay = `${0.3 + (index * 0.1)}s`;
     });
-}
 
+ 
+    Fancybox.bind('[data-fancybox="gallery-more"]', {});
+}
 function closeMoreWorks() {
-    moreWorksLayer.classList.remove('active');
-    document.body.classList.remove('modal-active'); // Unlock the background
+    const layer = document.getElementById('moreWorksLayer');
+    const triggerCard = document.getElementById('moreWorksTrigger');
+
+ 
+    layer.classList.remove('active');
+    document.body.classList.remove('modal-active'); 
+
+
+    triggerCard.classList.remove('card-collapsing');
+    triggerCard.classList.add('card-restoring'); 
+
+
+    const workItems = layer.querySelectorAll('.grid a');
+    workItems.forEach(item => item.style.transitionDelay = '0s');
 }
 
-// Click Outside logic
-document.addEventListener('click', (e) => {
-    const menu = document.getElementById('mobileMenuLayer');
-    const burgerBtn = document.querySelector('.mobile-menu');
-    
-    // Original Menu Click-outside
-    if (menu.classList.contains('active') && !menu.contains(e.target) && !burgerBtn.contains(e.target)) {
-        menu.classList.remove('active');
-        burgerBtn.classList.remove('active');
-    }
-});
+            // Click Outside logic
+            document.addEventListener('click', (e) => {
+                const menu = document.getElementById('mobileMenuLayer');
+                const burgerBtn = document.querySelector('.mobile-menu');
 
+                if (menu.classList.contains('active') && !menu.contains(e.target) && !burgerBtn.contains(e.target)) {
+                    menu.classList.remove('active');
+                    burgerBtn.classList.remove('active');
+                }
+            });
 
-container.addEventListener('wheel', (evt) => {
+            container.addEventListener('wheel', (evt) => {
+                if (document.body.classList.contains('modal-active')) {
+                    return;
+                }
+                if (window.innerWidth >= 768 && evt.deltaY !== 0) {
+                    evt.preventDefault();
+                    container.scrollBy({
+                        left: evt.deltaY * 1.5,
+                        behavior: 'auto'
+                    });
+                }
+            }, {
+                passive: false
+            });
 
-    if (document.body.classList.contains('modal-active')) {
-        return; 
-    }
-
-    if (window.innerWidth >= 768 && evt.deltaY !== 0) {
-        evt.preventDefault();
-        container.scrollBy({ left: evt.deltaY * 1.5, behavior: 'auto' });
-    }
-}, { passive: false });
-
-// Fancybox Initialization
-Fancybox.bind("[data-fancybox]", {});
-</script>
-</body>
+            // Fancybox Initialization
+            Fancybox.bind("[data-fancybox]", {});
+        </script>
+    </body>
 </html>
