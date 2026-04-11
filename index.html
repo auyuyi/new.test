@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,12 +11,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
     <style>
         * {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;     /* Firefox */
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
         }
 
         *::-webkit-scrollbar {
-            display: none;             /* Chrome, Safari and Opera */
+            display: none;
+            /* Chrome, Safari and Opera */
         }
 
         #mobileMenuLayer {
@@ -42,10 +46,12 @@
             overflow-y: auto;
         }
 
+        /* --- Desktop Layout --- */
         @media (min-width: 768px) {
             body {
                 overflow: hidden;
             }
+
             .horizontal-container {
                 display: flex;
                 overflow-x: auto;
@@ -54,12 +60,14 @@
                 -webkit-overflow-scrolling: touch;
                 scroll-behavior: smooth;
             }
+
             section {
                 flex: 0 0 100vw;
                 height: 100vh;
             }
         }
 
+        /* --- Mobile Layout --- */
         @media (max-width: 767px) {
             section {
                 display: block !important;
@@ -68,6 +76,7 @@
                 padding-top: 100px !important;
                 padding-bottom: 60px;
             }
+
             section .grid {
                 display: flex !important;
                 flex-direction: column !important;
@@ -83,6 +92,7 @@
                 scroll-snap-type: x mandatory;
                 height: 100vh;
             }
+
             section {
                 flex: 0 0 100vw;
                 height: 100vh;
@@ -93,6 +103,7 @@
                 -webkit-overflow-scrolling: touch;
                 scroll-behavior: smooth;
             }
+
             section:first-child {
                 display: flex !important;
                 align-items: center;
@@ -101,24 +112,29 @@
                 padding-bottom: 0 !important;
                 min-height: 100vh;
             }
+
             section:first-child h1 {
                 font-size: 2.5rem !important;
                 margin-bottom: 2rem !important;
             }
+
             section:first-child p {
                 font-size: 0.75rem !important;
                 margin-bottom: 2rem !important;
             }
+
             section:first-child .flex.flex-col {
                 padding: 1rem;
             }
+
             .progress-bar {
                 display: none;
             }
+
             #mobileMenuLayer {
                 position: fixed;
                 width: 180px;
-                background: rgba(20, 20, 20, 0.7);
+                background: rgba(20, 20, 20, 0.6);
                 backdrop-filter: blur(20px);
                 -webkit-backdrop-filter: blur(20px);
                 border: 1px solid rgba(255, 255, 255, 0.1);
@@ -134,11 +150,13 @@
                 transform: scale(0.9) translateY(-10px);
                 pointer-events: none;
             }
+
             #mobileMenuLayer.active {
                 opacity: 1;
                 transform: scale(1) translateY(0);
                 pointer-events: auto;
             }
+
             #mobileMenuLayer a {
                 color: white;
                 padding: 0.8rem 1.2rem;
@@ -147,6 +165,7 @@
                 border-radius: 1rem;
                 transition: background 0.2s;
             }
+
             #mobileMenuLayer a:active {
                 background: rgba(255, 255, 255, 0.1);
             }
@@ -282,7 +301,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
         }
 
         @media (max-width: 767px) {
@@ -292,12 +311,9 @@
                 backdrop-filter: blur(20px) saturate(180%);
                 -webkit-backdrop-filter: blur(20px) saturate(180%);
                 border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-                background-image: linear-gradient(
-                    to bottom,
-                    rgba(255, 255, 255, 0.05) 0%,
-                    transparent 100%
-                ) !important;
+                background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 0%, transparent 100%) !important;
             }
+
             .mobile-menu {
                 display: flex;
                 flex-direction: column;
@@ -305,6 +321,7 @@
                 cursor: pointer;
                 width: 24px;
             }
+
             .mobile-menu span {
                 display: block;
                 width: 100%;
@@ -312,15 +329,19 @@
                 background: linear-gradient(90deg, #fff, #a5b4fc) !important;
                 transition: 0.3s;
             }
+
             .mobile-menu.active span:nth-child(1) {
                 transform: translateY(7px) rotate(45deg);
             }
+
             .mobile-menu.active span:nth-child(2) {
                 opacity: 0;
             }
+
             .mobile-menu.active span:nth-child(3) {
                 transform: translateY(-7px) rotate(-45deg);
             }
+
             .pc-nav-links {
                 display: none;
             }
@@ -336,14 +357,19 @@
         }
 
         .text-reveal {
-            transform: translateY(20px);
+            transform: translateY(30px);
             opacity: 0;
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.5s cubic-bezier(0.2, 0, 0.2, 1);
         }
 
         .active-section .text-reveal {
             transform: translateY(0);
             opacity: 1;
+            filter: blur(0);
+        }
+
+        .active-section .text-reveal {
+            transition-delay: 0.4s;
         }
 
         .progress-bar {
@@ -354,6 +380,7 @@
             width: 200px;
             height: 2px;
             background: rgba(255, 255, 255, 0.1);
+            z-index: Forwarding;
             z-index: 100;
         }
 
@@ -381,12 +408,14 @@
                 border-top: 1px solid rgba(255, 255, 255, 0.05);
                 background: rgba(0, 0, 0, 0.2);
             }
+
             section {
                 height: auto !important;
                 min-height: 100vh;
                 display: block !important;
                 padding: 80px 20px !important;
             }
+
             .gallery-grid-clean {
                 display: grid !important;
                 grid-template-columns: 1fr !important;
@@ -394,6 +423,7 @@
                 gap: 1.5rem;
                 height: auto !important;
             }
+
             .gallery-grid-clean > div {
                 grid-column: span 1 / span 1 !important;
                 width: 100% !important;
@@ -402,6 +432,7 @@
                 overflow: hidden;
                 border-radius: 1.5rem;
             }
+
             .gallery-grid-clean div[onclick="openMoreWorks()"] {
                 order: 99 !important;
                 aspect-ratio: 5 / 2 !important;
@@ -428,11 +459,20 @@
         }
 
         .gallery-grid-clean .group img {
-            filter: brightness(0.6) saturate(0.8);
+            filter: brightness(0.8) saturate(0.8);
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .gallery-grid-clean .group:hover img {
+            filter: brightness(1) saturate(1);
+        }
+
+        #moreWorksLayer .grid img {
+            filter: brightness(0.8) saturate(0.8);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #moreWorksLayer .grid a:hover img {
             filter: brightness(1) saturate(1);
         }
 
@@ -461,200 +501,199 @@
         .fancybox__container {
             z-index: 200 !important;
         }
+
         /* --- ENTRANCE LOADER SYSTEM --- */
-#shutter-wrapper {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background-color: #0a0a0a;
-    background-image: url('images/pic16.webp'); 
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 1.2s cubic-bezier(0.8, 0, 0.2, 1);
-}
+        #shutter-wrapper {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background-color: #0a0a0a;
+            background-image: url('images/pic16.webp');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1.2s cubic-bezier(0.8, 0, 0.2, 1);
+        }
 
-#shutter-wrapper::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.7); /* Darken mask */
-    backdrop-filter: blur(12px); /* Soft blur background */
-}
+        #shutter-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px);
+        }
 
-#shutter-loader-line {
-    position: relative;
-    z-index: 10;
-    width: 0px;
-    height: 1px;
-    background: white;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-    transition: width 1.8s cubic-bezier(0.2, 0, 0.2, 1);
-}
+        #shutter-loader-line {
+            position: relative;
+            z-index: 10;
+            width: 0px;
+            height:     1px;
+            background: white;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            transition: width 1.8s cubic-bezier(0.2, 0, 0.2, 1);
+        }
 
+        .loader-finished {
+            opacity: 0;
+            pointer-events: none;
+        }
 
+        /* --- NEW CONTACT CARD STYLE --- */
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
 
-.loader-finished {
-    opacity: 0;
-    pointer-events: none;
-}
+        .contact-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
 
+        .border-mask {
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: all 0.5s ease;
+        }
 
-/* --- NEW CONTACT CARD STYLE (Micro-Border Elegance) --- */
-.contact-card {
+        .border-mask::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 20px;
+            border: 1px solid transparent;
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            border-color: #a5b4fc;
+            clip-path: inset(0 100% 100% 0);
+        }
 
-    background: rgba(255,255,255,0.05); 
-    backdrop-filter: blur(20px); 
-    -webkit-backdrop-filter: blur(20px);
-    
+        .contact-card:hover .border-mask::after {
+            clip-path: inset(0 0 0 0);
+        }
 
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    
+        .contact-icon-box {
+            width: 48px;
+            height: 48px;
+            background: rgba(20, 20, 20, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+            transition: all 0.4s ease;
+            z-index: 10;
+        }
 
-    border-radius: 20px;
-    padding: 24px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
+        .contact-card:hover .contact-icon-box {
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.1);
+            background: rgba(99, 102, 241, 0.04);
+        }
 
+        #contact {
+            min-height: 100vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
 
-.contact-card:hover {
-    background: rgba(255, 255, 255, 0.07);
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-}
+        #contact .flex-grow {
+            flex-shrink: 0;
+        }
 
-/* --- THE SECRET SAUCE: Dynamic Micro-Border --- */
+        @keyframes card-collapse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+                filter: blur(0px);
+            }
 
-.border-mask {
-    position: absolute;
-    inset: 0;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.04); 
-    transition: all 0.5s ease;
-}
+            100% {
+                transform: scale(0.1);
+                opacity: 0;
+                filter: blur(10px);
+            }
+        }
 
+        @keyframes card-restore {
+            0% {
+                transform: scale(0.1);
+                opacity: 0;
+                filter: blur(10px);
+            }
 
-.border-mask::after {
-    content: '';
-    position: absolute;
-    inset: -1px; 
-    border-radius: 20px;
-    border: 1px solid transparent;
-    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1); 
-    
+            100% {
+                transform: scale(1);
+                opacity: 1;
+                filter: blur(0px);
+            }
+        }
 
-    border-color: #a5b4fc; /* Indigo 200 */
-   
-    clip-path: inset(0 100% 100% 0); 
-}
+        .card-collapsing {
+            animation: card-collapse 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
 
+        .card-restoring {
+            animation: card-restore 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
 
-.contact-card:hover .border-mask::after {
-    clip-path: inset(0 0 0 0); 
-}
+        #moreWorksLayer {
+            transform: scale(0.3);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 2rem;
+            overflow: hidden;
+        }
 
+        #moreWorksLayer.active {
+            border-radius: 0;
+        }
 
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
 
-.contact-icon-box {
-    width: 48px; height: 48px;
-    background: rgba(20, 20, 20, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.03);
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(255, 255, 255, 0.5);
-    transition: all 0.4s ease;
-    z-index: 10;
-}
+        .nav-link.active {
+            background: linear-gradient(90deg, #ffffff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 1 !important;
+        }
 
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #6366f1, #a5b4fc);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateX(-50%);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition-delay: 0.1s;
+            border-radius: 2px;
+        }
 
-.contact-card:hover .contact-icon-box {
-    color: #a5b4fc;
-    border-color: rgba(99, 102, 241, 0.1);
-    background: rgba(99, 102, 241, 0.04);
-}
-/* Ensure the section can scroll on small screens */
-#contact {
-    /* Change from fixed height to min-height */
-    min-height: 100vh; 
-    /* Allow vertical scrolling if content exceeds screen height */
-    overflow-y: auto; 
-    /* Smooth scrolling for iOS devices */
-    -webkit-overflow-scrolling: touch; 
-}
-
-/* Fix for the flex-grow container on mobile */
-#contact .flex-grow {
-    flex-shrink: 0; /* Prevents the card container from collapsing */
-}
-
-@keyframes card-collapse {
-    0% { transform: scale(1); opacity: 1; filter: blur(0px); }
-    100% { transform: scale(0.1); opacity: 0; filter: blur(10px); }
-}
-
-
-@keyframes card-restore {
-    0% { transform: scale(0.1); opacity: 0; filter: blur(10px); }
-    100% { transform: scale(1); opacity: 1; filter: blur(0px); }
-}
-
-
-.card-collapsing { animation: card-collapse 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
-.card-restoring { animation: card-restore 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-
-#moreWorksLayer {
-
-    transform: scale(0.3); 
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
-
-    border-radius: 2rem; 
-    overflow: hidden; 
-}
-
-#moreWorksLayer.active {
-    border-radius: 0; 
-}
-
-.nav-link {
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-
-.nav-link.active {
-    background: linear-gradient(90deg, #ffffff 0%, #a5b4fc 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    opacity: 1 !important; 
-}
-
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #6366f1, #a5b4fc);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    transform: translateX(-50%);
-    border-radius: 2px;
-}
-
-.nav-link.active::after {
-    width: 100%; 
-}
+        .nav-link.active::after {
+            width: 100%;
+        }
 
         .contact-pill-btn {
             padding: 0.65rem 1.5rem;
@@ -689,29 +728,39 @@
             opacity: 1;
             background: rgba(99, 102, 241, 0.2);
         }
+
+        .nav-transitioning section {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
     </style>
 </head>
+
 <body>
     <div id="shutter-wrapper">
-    <div id="shutter-loader-line"></div>
-    <div class="text-[9px] text-white/30 tracking-[0.8em] uppercase mt-4 relative z-10">Initialising Anthology</div>
-</div>
+        <div id="shutter-loader-line"></div>
+        <div class="text-[9px] text-white/30 tracking-[0.8em] uppercase mt-4 relative z-10">Initialising Anthology</div>
+    </div>
+
     <div id="loadingCircle">
         <svg class="circle-svg" width="50" height="50">
             <circle class="circle-loader-bg" cx="25" cy="25" r="20"></circle>
             <circle id="circlePath" class="circle-loader-path" cx="25" cy="25" r="20"></circle>
         </svg>
     </div>
+
     <nav>
-        <div class="text-white text-xl font-bold tracking-tighter">AUYUYI<span class="text-indigo-400">.</span></div>
-       <div class="pc-nav-links hidden md:flex relative space-x-8 text-xs font-semibold uppercase tracking-widest text-white/60">
-    <a href="javascript:void(0)" onclick="scrollToSection(0)" class="nav-link active">Home</a>
-    <a href="javascript:void(0)" onclick="scrollToSection(1)" class="nav-link">Gallery</a>
-    <a href="javascript:void(0)" onclick="scrollToSection(2)" class="nav-link">Process</a>
-    <a href="javascript:void(0)" onclick="scrollToSection(3)" class="nav-link">Contact</a>
-    <div id="navIndicator" class="absolute bottom-[-8px] h-[2px] bg-gradient-to-r from-indigo-500 to-indigo-300 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]"></div>
-</div>
-        
+        <div class="text-white text-xl font-bold tracking-tighter">
+            AUYUYI<span class="text-indigo-400">.</span>
+        </div>
+
+        <div class="pc-nav-links hidden md:flex relative space-x-8 text-xs font-semibold uppercase tracking-widest text-white/60">
+            <a href="javascript:void(0)" onclick="scrollToSection(0)" class="nav-link active">Home</a>
+            <a href="javascript:void(0)" onclick="scrollToSection(1)" class="nav-link">Gallery</a>
+            <a href="javascript:void(0)" onclick="scrollToSection(2)" class="nav-link">Process</a>
+            <a href="javascript:void(0)" onclick="scrollToSection(3)" class="nav-link">Contact</a>
+            <div id="navIndicator" class="absolute bottom-[-8px] h-[2px] bg-gradient-to-r from-indigo-500 to-indigo-300 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]"></div>
+        </div>
+
         <div class="flex items-center gap-3 md:gap-6">
             <button class="sm:hidden block bg-white text-black text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-tighter hover:bg-indigo-400 hover:text-white transition">Commission</button>
             <div class="md:hidden mobile-menu" onclick="toggleMobileMenu()">
@@ -735,6 +784,7 @@
     </div>
 
     <div class="horizontal-container" id="scrollContainer">
+
         <section class="flex items-center justify-center active-section px-6 md:px-12 relative overflow-hidden">
             <div class="bg-blob" style="top: -10%; right: -5%;"></div>
             <div class="bg-blob" style="bottom: -15%; left: 10%; background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);"></div>
@@ -761,16 +811,14 @@
             </div>
         </section>
 
-    <section class="flex flex-col justify-center px-12 md:px-24 py-20 relative">
-         
-
+        <section class="flex flex-col justify-center px-12 md:px-24 py-20 relative">
             <div class="max-w-7xl w-full mx-auto z-10">
                 <div class="flex justify-between items-end mb-12">
                     <div>
                         <h2 class="text-white text-5xl font-black tracking-tighter mb-2 text-reveal">Selected Works (๑>ᴗ<๑)</h2>
                         <p class="text-white/40 text-sm text-reveal" style="transition-delay: 100ms;">Visual experiments and personal illustrations.</p>
                     </div>
-                    <button onclick="scrollToSection(2)" class="fancy-btn group">
+                    <button onclick="scrollToSection(2)" class="fancy-btn group text-reveal" style="transition-delay: 400ms;">
                         <span class="text-[10px] font-bold uppercase tracking-[0.2em]">The Process</span>
                         <svg class="w-4 h-4 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path d="M13 7l5 5m0 0l-5 5m5-5H6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -789,6 +837,7 @@
                             </div>
                         </a>
                     </div>
+
                     <div class="col-span-3 row-span-1 rounded-[2rem] overflow-hidden glass-panel group text-reveal relative" style="transition-delay: 300ms;">
                         <a href="images/pic02.webp" data-fancybox="gallery">
                             <img src="images/pic02.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
@@ -799,12 +848,13 @@
                             </div>
                         </a>
                     </div>
+
                     <div id="moreWorksTrigger" onclick="openMoreWorks()" class="col-span-3 row-span-2 rounded-[2rem] glass-panel flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 transition-all duration-500 group relative overflow-hidden text-reveal" style="transition-delay: 500ms;">
                         <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         <div class="relative z-10 flex flex-col items-center">
-                            <div class="w-14 h-14 rounded-full border border-white/10 bg-white/5 flex items-center justify-center mb-5 group-hover:border-indigo-400/50 group-hover:bg-indigo-500/10 transition-all duration-500">
+                            <div class="w-14 h-14 rounded-full border border-white/10 bg-white/5 flex items-center justify-center mb-5 group-hover:border-indigo-400/50 group-hover:bg-indigo-500/10 transition-all duration-500 text-reveal">
                                 <svg class="w-6 h-6 text-white/80 group-hover:text-indigo-400 transform group-hover:scale-110 group-hover:translate-y-px transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </div>
                             <span class="text-white text-[11px] font-black uppercase tracking-[0.3em] mb-1">View Archives</span>
@@ -812,6 +862,7 @@
                         </div>
                         <div class="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center"></div>
                     </div>
+
                     <div class="col-span-3 row-span-1 rounded-[2rem] overflow-hidden glass-panel group text-reveal relative" style="transition-delay: 400ms;">
                         <a href="images/pic03.webp" data-fancybox="gallery">
                             <img src="images/pic03.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
@@ -860,7 +911,14 @@
                             A deep dive into my creative workflow, from messy sketches to final renders.
                         </p>
                     </div>
+                    <button onclick="scrollToSection(3)" class="fancy-btn group text-reveal" style="transition-delay: 200ms;">
+                        <span class="text-[10px] font-bold uppercase tracking-[0.2em]">Contact Me</span>
+                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M13 7l5 5m0 0l-5 5m5-5H6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
                 </div>
+
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="space-y-4 text-reveal" style="transition-delay: 200ms;">
@@ -942,253 +1000,333 @@
             </div>
         </section>
 
-<section id="contact" class="min-h-screen flex flex-col bg-transparent relative overflow-hidden">
-    <div class="bg-blob" style="bottom: -15%; left: -5%; width: 700px; height: 700px; background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 75%);"></div>
+        <section id="contact" class="min-h-screen flex flex-col bg-transparent relative overflow-hidden">
+            <div class="bg-blob" style="bottom: -15%; left: -5%; width: 700px; height: 700px; background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 75%);"></div>
 
-    <div class="flex-grow flex flex-col items-center justify-center z-10 px-12">
-        <div class="max-w-5xl w-full text-center">
-            <div class="mb-20">
-                <h2 class="text-white text-6xl md:text-8xl font-black tracking-tighter leading-none mb-6 text-reveal">
-                    Say <span class="text-indigo-400">Hello!</span>
-                </h2>
-                <p class="text-white/40 text-lg font-medium text-reveal" style="transition-delay: 100ms;">
-                    Available for freelance commissions.
-                </p>
+            <div class="flex-grow flex flex-col items-center justify-center z-10 px-12">
+                <div class="max-w-5xl w-full text-center">
+                    <div class="mb-20">
+                        <h2 class="text-white text-6xl md:text-8xl font-black tracking-tighter leading-none mb-6 text-reveal">
+                            Say <span class="text-indigo-400">Hello!</span>
+                        </h2>
+                        <p class="text-white/40 text-lg font-medium text-reveal" style="transition-delay: 100ms;">
+                            Available for freelance commissions.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-2xl mx-auto text-reveal" style="transition-delay: 200ms;">
+                        <a href="mailto:hi@auyuyi.art" class="contact-card group">
+                            <div class="border-mask"></div>
+                            <div class="contact-icon-box relative z-10">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div class="text-left flex-1 relative z-10">
+                                <span class="text-white font-bold text-base block tracking-tight">hi@auyuyi.art</span>
+                                <span class="text-white/40 text-[9px] tracking-[0.4em] uppercase mt-0.5 block">Official Inquiry</span>
+                            </div>
+                        </a>
+
+                        <a href="#" class="contact-card group">
+                            <div class="border-mask"></div>
+                            <div class="contact-icon-box relative z-10">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div class="text-left flex-1 relative z-10">
+                                <span class="text-white font-bold text-base block tracking-tight">Artstation</span>
+                                <span class="text-white/40 text-[9px] tracking-[0.4em] uppercase mt-0.5 block">Artwork Portfolio</span>
+                            </div>
+                        </a>
+
+                        <a href="#" class="contact-card group">
+                            <div class="border-mask"></div>
+                            <div class="contact-icon-box relative z-10">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+                                </svg>
+                            </div>
+                            <div class="text-left flex-1 relative z-10">
+                                <span class="text-white font-bold text-base block tracking-tight">Twitter / X</span>
+                                <span class="text-white/40 text-[9px] tracking-[0.4em] uppercase mt-0.5 block">Daily Thoughts</span>
+                            </div>
+                        </a>
+
+                        <a href="#" class="contact-card group">
+                            <div class="border-mask"></div>
+                            <div class="contact-icon-box relative z-10">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                                    <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.2" />
+                                    <circle cx="18" cy="6" r="1" fill="currentColor" />
+                                </svg>
+                            </div>
+                            <div class="text-left flex-1 relative z-10">
+                                <span class="text-white font-bold text-base block tracking-tight">Instagram</span>
+                                <span class="text-white/40 text-[9px] tracking-[0.4em] uppercase mt-0.5 block">Daily Sketches</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-16 flex justify-center text-reveal" style="transition-delay: 400ms;">
+                    <button onclick="scrollToSection(0)" class="group flex items-center gap-3 px-6 py-2 rounded-full border border-white/10 hover:border-white/30 hover:bg-white/5 transition-all duration-500">
+                        <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+                        </svg>
+                        <span class="text-[10px] text-white/60 font-bold uppercase tracking-[0.2em] group-hover:text-white transition-colors">Back to Home</span>
+                    </button>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-2xl mx-auto text-reveal" style="transition-delay: 200ms;">
-                <a href="mailto:hi@auyuyi.art" class="contact-card group">
-                    <div class="border-mask"></div>
-                    <div class="contact-icon-box relative z-10">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <div class="text-left flex-1 relative z-10">
-                        <span class="text-white font-bold text-base block tracking-tight">hi@auyuyi.art</span>
-                        <span class="text-white/40 text-[9px] tracking-[0.4em] uppercase mt-0.5 block">Official Inquiry</span>
-                    </div>
-                </a>
-
-                <a href="#" class="contact-card group">
-                    <div class="border-mask"></div>
-                    <div class="contact-icon-box relative z-10">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <div class="text-left flex-1 relative z-10">
-                        <span class="text-white font-bold text-base block tracking-tight">Artstation</span>
-                        <span class="text-white/40 text-[9px] tracking-[0.4em] uppercase mt-0.5 block">Artwork Portfolio</span>
-                    </div>
-                </a>
-
-                <a href="#" class="contact-card group">
-                    <div class="border-mask"></div>
-                    <div class="contact-icon-box relative z-10">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
-                    </div>
-                    <div class="text-left flex-1 relative z-10">
-                        <span class="text-white font-bold text-base block tracking-tight">Twitter / X</span>
-                        <span class="text-white/40 text-[9px] tracking-[0.4em] uppercase mt-0.5 block">Daily Thoughts</span>
-                    </div>
-                </a>
-
-                <a href="#" class="contact-card group">
-                    <div class="border-mask"></div>
-                    <div class="contact-icon-box relative z-10">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="18" cy="6" r="1" fill="currentColor"/></svg>
-                    </div>
-                    <div class="text-left flex-1 relative z-10">
-                        <span class="text-white font-bold text-base block tracking-tight">Instagram</span>
-                        <span class="text-white/40 text-[9px] tracking-[0.4em] uppercase mt-0.5 block">Daily Sketches</span>
-                    </div>
-                </a>
+            <div class="w-full py-8 text-center z-10">
+                <div class="site-footer footer-text opacity-30 text-[10px] tracking-[0.5em] uppercase">
+                    © 2026 Auyuyi Visual Anthology — Built for the future
+                </div>
             </div>
-        </div>
+        </section>
     </div>
 
-    <div class="w-full py-8 text-center z-10">
-        <div class="site-footer footer-text opacity-30 text-[10px] tracking-[0.5em] uppercase">
-            © 2026 Auyuyi Visual Anthology — Built for the future
-        </div>
-    </div>
-</section>
-     
+    <script>
+        const container = document.getElementById('scrollContainer');
+        const sections = document.querySelectorAll('section');
+        const progressFill = document.getElementById('progressFill');
+        const navLinks = document.querySelectorAll('.nav-link');
 
-        <script>
-           // --- PRELOADER & ENTRANCE LOGIC ---
 
-const container = document.getElementById('scrollContainer');
-const sections = document.querySelectorAll('section');
-const progressFill = document.getElementById('progressFill');
+        document.addEventListener('DOMContentLoaded', () => {
+            const loader = document.getElementById('shutter-wrapper');
+            const line = document.getElementById('shutter-loader-line');
+            const firstSection = document.querySelector('section');
 
-const navLinks = document.querySelectorAll('.nav-link'); 
+            const config = {
+                blurFadeDuration: 1200,
+                loaderHoldTime: 1800,
+                isHome: container.scrollLeft < 200
+            };
 
-document.addEventListener('DOMContentLoaded', () => {
-    const loader = document.getElementById('shutter-wrapper');
-    const line = document.getElementById('shutter-loader-line');
-    const firstSection = document.querySelector('section');
 
-    const config = {
-        blurFadeDuration: 1200, 
-        loaderHoldTime: 1800,   
-        isHome: container.scrollLeft < 200 
-    };
-
-    if (!config.isHome) {
-        if (loader) loader.style.display = 'none';
-        if (firstSection) firstSection.classList.add('active-section');
-        return; 
-    }
-
-    if (firstSection) firstSection.classList.remove('active-section');
-
-    setTimeout(() => {
-        if(line) line.style.width = '240px';
-    }, 150);
-
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            if(loader) loader.classList.add('loader-finished');
-            setTimeout(() => {
+            if (!config.isHome) {
+                if (loader) loader.style.display = 'none';
                 if (firstSection) firstSection.classList.add('active-section');
-            }, 400);
-        }, config.loaderHoldTime);
-    });
-});
-
-
-container.addEventListener('scroll', () => {
-    const scrollWidth = container.scrollWidth - container.clientWidth;
-    const scrollLeft = container.scrollLeft;
-    
-
-    const progress = (scrollLeft / (scrollWidth || 1)) * 100;
-    if (progressFill) progressFill.style.width = progress + '%';
-
-    const currentIndex = Math.floor((scrollLeft + window.innerWidth * 0.3) / window.innerWidth);
-    
-
-    sections.forEach((sec, idx) => {
-        if (idx === currentIndex) {
-            sec.classList.add('active-section');
-            
-            if (navLinks[idx]) navLinks[idx].classList.add('active');
-        } else {
-            sec.classList.remove('active-section');
-            if (navLinks[idx]) navLinks[idx].classList.remove('active');
-        }
-    });
-});
-
-
-function scrollToSection(index) {
-    container.scrollTo({
-        left: window.innerWidth * index,
-        behavior: 'smooth'
-    });
-}
-
-            // Mobile Menu Logic
-            function toggleMobileMenu() {
-                const menu = document.getElementById('mobileMenuLayer');
-                const burgerBtn = document.querySelector('.mobile-menu');
-                
-                if (!menu.classList.contains('active')) {
-                    // Calculate burger button position
-                    const rect = burgerBtn.getBoundingClientRect();
-                    const top = rect.bottom + 10; // 10px below the burger button
-                    const right = window.innerWidth - rect.right; // Distance from right edge
-                    
-                    menu.style.top = top + 'px';
-                    menu.style.right = right + 'px';
-                }
-                
-                menu.classList.toggle('active');
-                burgerBtn.classList.toggle('active');
+                return;
             }
 
-            function navAndCloseMenu(index) {
-                scrollToSection(index);
-                toggleMobileMenu();
-            }
 
-            // --- Modal Logic ---
+            if (firstSection) firstSection.classList.remove('active-section');
 
+            setTimeout(() => {
+                if (line) line.style.width = '240px';
+            }, 150);
 
-            function openMoreWorks() {
-    const layer = document.getElementById('moreWorksLayer');
-    const triggerCard = document.getElementById('moreWorksTrigger');
-    
-
-    const rect = triggerCard.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-
-    layer.style.transformOrigin = `${centerX}px ${centerY}px`;
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    if (loader) loader.classList.add('loader-finished');
+                    setTimeout(() => {
+                        if (firstSection) firstSection.classList.add('active-section');
+                    }, 400);
+                }, config.loaderHoldTime);
+            });
+        });
 
 
-    triggerCard.classList.remove('card-restoring');
-    triggerCard.classList.add('card-collapsing');
-    
-  
-    setTimeout(() => {
-        layer.classList.add('active');
-        document.body.classList.add('modal-active'); 
-    }, 10);
+        container.addEventListener('scroll', () => {
+            const scrollWidth = container.scrollWidth - container.clientWidth;
+            const scrollLeft = container.scrollLeft;
 
 
-    const workItems = layer.querySelectorAll('.grid a');
-    workItems.forEach((item, index) => {
-        item.style.transitionDelay = `${0.3 + (index * 0.1)}s`;
-    });
-
- 
-    Fancybox.bind('[data-fancybox="gallery-more"]', {});
-}
-function closeMoreWorks() {
-    const layer = document.getElementById('moreWorksLayer');
-    const triggerCard = document.getElementById('moreWorksTrigger');
-
- 
-    layer.classList.remove('active');
-    document.body.classList.remove('modal-active'); 
+            const progress = (scrollLeft / (scrollWidth || 1)) * 100;
+            if (progressFill) progressFill.style.width = progress + '%';
 
 
-    triggerCard.classList.remove('card-collapsing');
-    triggerCard.classList.add('card-restoring'); 
+            const currentIndex = Math.floor((scrollLeft + window.innerWidth * 0.3) / window.innerWidth);
 
-
-    const workItems = layer.querySelectorAll('.grid a');
-    workItems.forEach(item => item.style.transitionDelay = '0s');
-}
-
-            // Click Outside logic
-            document.addEventListener('click', (e) => {
-                const menu = document.getElementById('mobileMenuLayer');
-                const burgerBtn = document.querySelector('.mobile-menu');
-
-                if (menu.classList.contains('active') && !menu.contains(e.target) && !burgerBtn.contains(e.target)) {
-                    menu.classList.remove('active');
-                    burgerBtn.classList.remove('active');
+            sections.forEach((sec, idx) => {
+                if (idx === currentIndex) {
+                    sec.classList.add('active-section');
+                    if (navLinks[idx]) navLinks[idx].classList.add('active');
+                } else {
+                    sec.classList.remove('active-section');
+                    if (navLinks[idx]) navLinks[idx].classList.remove('active');
                 }
             });
+        });
 
-            container.addEventListener('wheel', (evt) => {
-                if (document.body.classList.contains('modal-active')) {
-                    return;
+
+        let isNavigating = false;
+
+        function scrollToSection(index) {
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach((link, i) => {
+                if (i === index) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
                 }
-                if (window.innerWidth >= 768 && evt.deltaY !== 0) {
-                    evt.preventDefault();
-                    container.scrollBy({
-                        left: evt.deltaY * 1.5,
-                        behavior: 'auto'
+            });
+            const currentLeft = container.scrollLeft;
+            const currentIndex = Math.round(currentLeft / window.innerWidth);
+            if (index === currentIndex || isNavigating) return;
+
+            isNavigating = true;
+
+            const targetPage = sections[index];
+            const currentPage = sections[currentIndex];
+            const direction = index > currentIndex ? 1 : -1;
+
+
+            container.style.overflowX = 'hidden';
+            container.style.scrollSnapType = 'none';
+
+
+            const initialOffset = (currentIndex + direction) * window.innerWidth - (index * window.innerWidth);
+            targetPage.style.transform = `translateX(${initialOffset}px)`;
+            targetPage.style.zIndex = "100";
+
+            targetPage.offsetHeight;
+
+
+            container.classList.add('nav-transitioning');
+
+
+            targetPage.style.transform = `translateX(${initialOffset - (direction * window.innerWidth)}px)`;
+
+            currentPage.style.transform = `translateX(${-direction * window.innerWidth}px)`;
+
+
+            setTimeout(() => {
+
+                container.classList.remove('nav-transitioning');
+                targetPage.style.transform = '';
+                targetPage.style.zIndex = "";
+                currentPage.style.transform = '';
+
+
+                container.style.scrollBehavior = 'auto';
+                container.scrollTo({
+                    left: index * window.innerWidth,
+                    behavior: 'auto'
+                });
+
+
+                setTimeout(() => {
+                    container.style.scrollBehavior = 'smooth';
+                    container.style.overflowX = 'auto';
+                    container.style.scrollSnapType = 'x mandatory';
+                    sections.forEach((s, i) => {
+                        if (i === index) s.classList.add('active-section');
+                        else s.classList.remove('active-section');
                     });
-                }
-            }, {
-                passive: false
+                    isNavigating = false;
+                }, 50);
+            }, 600);
+        }
+
+
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenuLayer');
+            const burgerBtn = document.querySelector('.mobile-menu');
+
+            if (!menu.classList.contains('active')) {
+                const rect = burgerBtn.getBoundingClientRect();
+                const top = rect.bottom + 10;
+                const right = window.innerWidth - rect.right;
+
+                menu.style.top = top + 'px';
+                menu.style.right = right + 'px';
+            }
+
+            menu.classList.toggle('active');
+            burgerBtn.classList.toggle('active');
+        }
+
+        function navAndCloseMenu(index) {
+            scrollToSection(index);
+            toggleMobileMenu();
+        }
+
+
+        function openMoreWorks() {
+            const layer = document.getElementById('moreWorksLayer');
+            const triggerCard = document.getElementById('moreWorksTrigger');
+
+            const rect = triggerCard.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            layer.style.transformOrigin = `${centerX}px ${centerY}px`;
+
+            triggerCard.classList.remove('card-restoring');
+            triggerCard.classList.add('card-collapsing');
+
+            setTimeout(() => {
+                layer.classList.add('active');
+                document.body.classList.add('modal-active');
+            }, 10);
+
+
+            const workItems = layer.querySelectorAll('.grid a');
+            workItems.forEach((item, index) => {
+                item.style.transitionDelay = `${0.3 + (index * 0.1)}s`;
             });
 
-            // Fancybox Initialization
-            Fancybox.bind("[data-fancybox]", {});
-        </script>
-    </body>
+            Fancybox.bind('[data-fancybox="gallery-more"]', {});
+        }
+
+        function closeMoreWorks() {
+            const layer = document.getElementById('moreWorksLayer');
+            const triggerCard = document.getElementById('moreWorksTrigger');
+
+            layer.classList.remove('active');
+            document.body.classList.remove('modal-active');
+
+
+            triggerCard.classList.remove('card-collapsing');
+            triggerCard.classList.add('card-restoring');
+
+            triggerCard.addEventListener('animationend', function cleanup() {
+                triggerCard.classList.remove('card-restoring');
+
+                triggerCard.removeEventListener('animationend', cleanup);
+            }, {
+                once: true
+            });
+
+            const workItems = layer.querySelectorAll('.grid a');
+            workItems.forEach(item => item.style.transitionDelay = '0s');
+        }
+
+
+        document.addEventListener('click', (e) => {
+            const menu = document.getElementById('mobileMenuLayer');
+            const burgerBtn = document.querySelector('.mobile-menu');
+
+            if (menu.classList.contains('active') && !menu.contains(e.target) && !burgerBtn.contains(e.target)) {
+                menu.classList.remove('active');
+                burgerBtn.classList.remove('active');
+            }
+        });
+
+
+        container.addEventListener('wheel', (evt) => {
+            if (document.body.classList.contains('modal-active')) return;
+
+            if (window.innerWidth >= 768 && evt.deltaY !== 0) {
+                evt.preventDefault();
+                container.scrollBy({
+                    left: evt.deltaY * 1.5,
+                    behavior: 'auto'
+                });
+            }
+        }, {
+            passive: false
+        });
+
+
+        Fancybox.bind("[data-fancybox]", {});
+    </script>
+</body>
+
 </html>
